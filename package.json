@@ -1,0 +1,22 @@
+{
+  "name": "learnthepresidents",
+  "version": "1.0.0",
+  "description": "8/28/2021 6:50 PM Welcome to our Learn the Presidents Alexa Skill!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachtango/learn-the-presidents.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachtango/learn-the-presidents/issues"
+  },
+  "homepage": "https://github.com/zachtango/learn-the-presidents#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}

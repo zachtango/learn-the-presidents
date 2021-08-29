@@ -1,4 +1,3 @@
-const { modules } = require("./PresIntent");
 
 const TestIntentHandler = {
     canHandle(handlerInput) {
