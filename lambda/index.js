@@ -39,7 +39,7 @@ const TestIntentHandler = {
 const RandomPresIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RandomPresIntentHandler';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RandomPresIntent';
     },
     handle(handlerInput) {
         const speakOutput = 'Hello World! Test';
