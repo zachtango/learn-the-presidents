@@ -11,7 +11,9 @@
     ]
   },
   {
-    "names": "John Adams",
+    "names": [
+      "John Adams"
+    ],
     "facts": [
       "was the first president to live in the White House",
       "died the same day as Thomas Jefferson on July 4th",
@@ -52,7 +54,9 @@
     ]
   },
   {
-    "names": "John Quincy Adams",
+    "names": [
+      "John Quincy Adams"
+    ],
     "facts": [
       "was the only other son besides George W. Bush to become president after his father",
       "lost a brutal reelection campaign to Andrew Jackson",
@@ -172,7 +176,9 @@
     ]
   },
   {
-    "names": "Andrew Johnson",
+    "names": [
+      "Andrew Johnson"
+    ],
     "facts": [
       "oversaw the purchase of Alaska from Russia",
       "was the first president to be impeached",
@@ -240,7 +246,9 @@
     ]
   },
   {
-    "names": "Benjamin Harrison",
+    "names": [
+      "Benjamin Harrison"
+    ],
     "facts": [
       "was nicknamed 'The Human Iceberg' because he had such a stiff personality",
       "saw the addition of six western states in the late 1800s despite Democrats' protests",
@@ -270,7 +278,10 @@
     ]
   },
   {
-    "names": "Theodore Roosevelt",
+    "names": [
+      "Theodore Roosevelt",
+      "Teddy Roosevelt"
+    ],
     "facts": [
       "was the first president to win a Nobel Peace Prize for helping Japan and Russia settle a peace treaty",
       "is the source for the name 'Teddy Bear'",
@@ -439,7 +450,9 @@
     ]
   },
   {
-    "names": "George H. W. Bush",
+    "names": [
+      "George H. W. Bush"
+    ],
     "facts": [
       "was the second president to be the father of another president",
       "postponed attending college to become one of the Navy's youngest pilots during World War 2",
@@ -458,7 +471,9 @@
     ]
   },
   {
-    "names": "George W. Bush",
+    "names": [
+      "George W. Bush"
+    ],
     "facts": [
       "presided over the majority of the Iraq War",
       "was the first president in the 21st century to win the election despite losing the popular vote",
