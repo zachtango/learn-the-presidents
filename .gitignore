@@ -3,3 +3,6 @@ lambda/node_modules
 ask-resources.json
 .eslintrc.json
 node_modules
+.vscode
+package-lock.json
+.DS_Store
