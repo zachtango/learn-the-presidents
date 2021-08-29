@@ -1,0 +1,503 @@
+[
+  {
+    "names": [
+      "George Washington",
+      "Washington"
+    ],
+    "facts": [
+      "led an attack that started the French and Indian War",
+      "was rumored to have chopped down a cherry tree as a child and told his father the truth because he 'couldn't tell a lie'",
+      "performed a surprise attack on British forces by crossing the Delaware River on a Christmas night during the Revolutionary War"
+    ]
+  },
+  {
+    "names": "John Adams",
+    "facts": [
+      "was the first president to live in the White House",
+      "died the same day as Thomas Jefferson on July 4th",
+      "had a wife whose letter admonishing the Founding Fathers to 'remember the ladies' is regarded as one of America's earliest women's rights documents"
+    ]
+  },
+  {
+    "names": [
+      "Thomas Jefferson",
+      "Jefferson"
+    ],
+    "facts": [
+      "presided over the Louisiana Purchase, which nearly doubled the nation's size",
+      "owned a massive library at his property named 'Monticello' that included a Koran",
+      "was one of the first American farmers to practice crop rotation"
+    ]
+  },
+  {
+    "names": [
+      "James Madison",
+      "Madison"
+    ],
+    "facts": [
+      "was the shortest president ever, at 5 feet 4 inches",
+      "is known as the 'Father of the Constitution'",
+      "had a wife named Dolly who saved several precious paintings when the British raided the White House in the early 1800s"
+    ]
+  },
+  {
+    "names": [
+      "James Monroe",
+      "Monroe"
+    ],
+    "facts": [
+      "put forth his famous doctrine that warned against European inteference in the Western Hemisphere",
+      "was the greatest benefactor of 'The Era of Good Feelings,' a time in the country where only one party ruled",
+      "bought Florida from Spain for 5 million dollars"
+    ]
+  },
+  {
+    "names": "John Quincy Adams",
+    "facts": [
+      "was the only other son besides George W. Bush to become president after his father",
+      "lost a brutal reelection campaign to Andrew Jackson",
+      "was the only president to serve in the House of Representatives after leaving the presidential office"
+    ]
+  },
+  {
+    "names": [
+      "Andrew Jackson",
+      "Jackson"
+    ],
+    "facts": [
+      "gained fame for his role in the Battle of New Orleans, where he was a general",
+      "presided over the tragic 'Trail of Tears,' where thousands of Native Americans were forced to relocate from their homelands",
+      "was the first president to win the popular vote but still lose the presidential election"
+    ]
+  },
+  {
+    "names": [
+      "Martin Van Buren",
+      "Van Buren",
+      "Buren"
+    ],
+    "facts": [
+      "was the first president to be born as a citizen of the United States, rather than as a British subject",
+      "was the only president to speak English as a second language",
+      "had a nickname, 'Old Kinderhook', that helped popularize the use of the word OK."
+    ]
+  },
+  {
+    "names": [
+      "William Henry Harrison",
+      "William Harrison"
+    ],
+    "facts": [
+      "became famous for winning the Battle of Tippecanoe",
+      "was the first president from the Whig Party",
+      "was the first president to die in office"
+    ]
+  },
+  {
+    "names": [
+      "John Tyler",
+      "Tyler"
+    ],
+    "facts": [
+      "became the first president to serve without being elected to office",
+      "saw the annexation of Texas",
+      "fathered 15 children, more than any other president"
+    ]
+  },
+  {
+    "names": [
+      "James K. Polk",
+      "Polk",
+      "James Polk"
+    ],
+    "facts": [
+      "waged war with Mexico, succeeding in adding large parts of Mexican territory to the U.S.",
+      "saw the greatest territorial expansion of any president, with the addition of territories containing modern-day California and Washington",
+      "is known as the first 'dark horse' president, meaning his nomination and eventual success was a surprise"
+    ]
+  },
+  {
+    "names": [
+      "Zachary Taylor",
+      "Taylor"
+    ],
+    "facts": [
+      "was nicknamed 'Old Rough and Ready'",
+      "died in 1850 after just over a year into office, though some rumor he was poisoned",
+      "was elected in 1848 in large part due to his status as a Mexican-American War hero"
+    ]
+  },
+  {
+    "names": [
+      "Millard Fillmore",
+      "Fillmore"
+    ],
+    "facts": [
+      "is best known for the Compromise of 1850, which attempted to settle southern and northern disputes about slavery",
+      "was the last president from the Whig Party",
+      "is criticized for enforcing the Fugitive Slave Act in the early 1850s"
+    ]
+  },
+  {
+    "names": [
+      "Franklin Pierce",
+      "Pierce"
+    ],
+    "facts": [
+      "was the only president to keep his entire cabinet for the full four-year term",
+      "was president when Commodore Matthew Perry's negotiations with Japan opened up the country to trade",
+      "presided over the Gadsden purchase, which added a strip of Mexico fit for railways to New Mexico and Arizona"
+    ]
+  },
+  {
+    "names": [
+      "James Buchanan",
+      "Buchanan"
+    ],
+    "facts": [
+      "was the only president who was never married",
+      "received the Democratic presidential nomination in 1856 as a compromise candidate",
+      "is seen as having been too lax on the southern states"
+    ]
+  },
+  {
+    "names": [
+      "Abraham Lincoln",
+      "Lincoln"
+    ],
+    "facts": [
+      "was the tallest, at six foot four inches",
+      "was the first president to be born outside of the original thirteen colonies, in Kentucky",
+      "led the Union as president through the Civil War"
+    ]
+  },
+  {
+    "names": "Andrew Johnson",
+    "facts": [
+      "oversaw the purchase of Alaska from Russia",
+      "was the first president to be impeached",
+      "was the only southerner to retain a U.S. Senate seat upon the South's secession",
+      "fought against Radical Republicans during reconstruction"
+    ]
+  },
+  {
+    "names": [
+      "Ulysses S. Grant",
+      "Grant",
+      "Ulysses Grant"
+    ],
+    "facts": [
+      "was the Commanding General of the U.S. Army through the end of the Civil War and into Reconstruction",
+      "wrote his memoirs in his final year of life due to financial distress, which proved to be a national hit",
+      "was supposed to have been at Ford's Theatre when President Lincoln was shot, but declined at his wife's request"
+    ]
+  },
+  {
+    "names": [
+      "Rutherford B. Hayes",
+      "Hayes",
+      "Rutherford Hayes"
+    ],
+    "facts": [
+      "was the subject of the 'Compromise of 1877.' which informally ended the Reoncstruction Era",
+      "was elected to the House of Representatives while serving as a Major General in the Civil War",
+      "was nicknamed 'His Fraudulency' for the close election by which he became president"
+    ]
+  },
+  {
+    "names": [
+      "James A. Garfield",
+      "Garfield",
+      "James Garfield"
+    ],
+    "facts": [
+      "shares his last name with a famous cartoon cat",
+      "was the second president to be assassinated",
+      "was the last president to be born in a log cabin"
+    ]
+  },
+  {
+    "names": [
+      "Chester A. Arthur",
+      "Arthur",
+      "Chester Arthur"
+    ],
+    "facts": [
+      "signed into law the Pendleton Civil Service Reform Act, which helped stymie corruption in appointed governmental positions",
+      "was nicknamed 'Elegant Arthur' for his fashionable tastes",
+      "bravely but unsuccessfully vetoed the Chinese Exclusion Act of 1882"
+    ]
+  },
+  {
+    "names": [
+      "Grover Cleveland",
+      "Cleveland"
+    ],
+    "facts": [
+      "was the only president to win two nonconsecutive terms",
+      "who smoothly handled an accusation by Republicans that he fathered an illegitimate child during a campaign",
+      "was the first Democrat president to be elected after the Civil War"
+    ]
+  },
+  {
+    "names": "Benjamin Harrison",
+    "facts": [
+      "was nicknamed 'The Human Iceberg' because he had such a stiff personality",
+      "saw the addition of six western states in the late 1800s despite Democrats' protests",
+      "was the last president of the nineteenth century to lose a presidential election as the incumbent"
+    ]
+  },
+  {
+    "names": [
+      "Grover Cleveland",
+      "Cleveland"
+    ],
+    "facts": [
+      "was the only president to win two nonconsecutive terms",
+      "who smoothly handled an accusation by Republicans that he fathered an illegitimate child during a campaign",
+      "was the first Democrat president to be elected after the Civil War"
+    ]
+  },
+  {
+    "names": [
+      "William McKinley",
+      "McKinley"
+    ],
+    "facts": [
+      "presided over the Spanish-American War",
+      "was assassinated by an anarchist at the start of his second term",
+      "was the first president to be filmed, ride in an automobile, and to use a telephone to campaign"
+    ]
+  },
+  {
+    "names": "Theodore Roosevelt",
+    "facts": [
+      "was the first president to win a Nobel Peace Prize for helping Japan and Russia settle a peace treaty",
+      "is the source for the name 'Teddy Bear'",
+      "published over 45 books in his lifetime"
+    ]
+  },
+  {
+    "names": [
+      "William Howard Taft",
+      "Taft",
+      "William Taft"
+    ],
+    "facts": [
+      "was appointed Chief Justice of the United States Supreme Court after leaving the presidency",
+      "was the heaviest president in United States history",
+      "was the only former president to swear in a new president"
+    ]
+  },
+  {
+    "names": [
+      "Woodrow Wilson",
+      "Wilson"
+    ],
+    "facts": [
+      "was the president of Princeton University before coming to office",
+      "whose stroke caused his wife to informally run the country for several years",
+      "oversaw the nation's participation in World War One"
+    ]
+  },
+  {
+    "names": [
+      "Warren G. Harding",
+      "Harding",
+      "Warren Harding"
+    ],
+    "facts": [
+      "was the first president elected after women received the right to vote",
+      "suffered a loss in reputation after the Teapot Dome Scandal",
+      "ran on a pledge for a 'return to normalcy'"
+    ]
+  },
+  {
+    "names": [
+      "Calvin Coolidge",
+      "Coolidge"
+    ],
+    "facts": [
+      "had the nickname 'Silent Cal'",
+      "became famous nationally for a strong response to a Boston police strike",
+      "was the only president born on the Fourth of July"
+    ]
+  },
+  {
+    "names": [
+      "Herbert Hoover",
+      "Hoover"
+    ],
+    "facts": [
+      "was the first president born west of the Mississippi River",
+      "lead the Commission for Relief in Belgium, which fed millions of people made hungry by the first world war",
+      "has a large dam named after him in Nevada"
+    ]
+  },
+  {
+    "names": [
+      "Franklin D. Roosevelt",
+      "Franklin Roosevelt",
+      "FDR"
+    ],
+    "facts": [
+      "pushed forth the 'New Deal', a series of programs and projects to provide Americans' relief from the Great Depression",
+      "holds the record for the longest-serving American president",
+      "was the first physically disabled person elected to the presidency"
+    ]
+  },
+  {
+    "names": [
+      "Harry S. Truman",
+      "Truman",
+      "Harry Truman"
+    ],
+    "facts": [
+      "oversaw US entrance into the Korean War",
+      "had a motto, 'The Buck Stops Here'",
+      "was the only president in the twentieth century who did not attend college"
+    ]
+  },
+  {
+    "names": [
+      "Dwight D. Eisenhower",
+      "Eisenhower",
+      "Dwight Eisenhower"
+    ],
+    "facts": [
+      "oversaw the addition of Alaska and Hawaii as states",
+      "presided over a massive build-out of the nation's highway system",
+      "was a five-star general in World War Two before assuming the presidency"
+    ]
+  },
+  {
+    "names": [
+      "John F. Kennedy",
+      "Kennedy",
+      "John Kennedy",
+      "JFK"
+    ],
+    "facts": [
+      "won a Purple Heart for his service in the Pacific during World War Two",
+      "was the youngest person elected president",
+      "was the second president assassinated in the twentieth century"
+    ]
+  },
+  {
+    "names": [
+      "Lyndon B. Johnson",
+      "Lyndon Johnson"
+    ],
+    "facts": [
+      "declined to run for a second term in office and instead retired to his Texas ranch in 1969",
+      "had a wife who went by the nickname of 'Lady Bird' who set about beautifying the nation's highways",
+      "pushed forth the  War on Poverty  and \"Great Society\" initiatives"
+    ]
+  },
+  {
+    "names": [
+      "Richard Nixon",
+      "Nixon"
+    ],
+    "facts": [
+      "visited China in 1972 in the first presidential visit to a nation not then recognized by the U.S. government",
+      "was the first president to resign the office",
+      "was the second president to be born to a Quaker family"
+    ]
+  },
+  {
+    "names": [
+      "Gerald Ford",
+      "Ford"
+    ],
+    "facts": [
+      "gave a controversial pardon of the former president shortly after taking office",
+      "was the only person to become president without winning an election for president or vice president",
+      "had a birth name of Leslie before it was legally changed in 1935"
+    ]
+  },
+  {
+    "names": [
+      "Jimmy Carter",
+      "Carter"
+    ],
+    "facts": [
+      "marketed himself as a humble peanut farmer from Plains, Georgia",
+      "was the first president from Georgia",
+      ", as of 2021, is still teaching a bible study class at the age of 96"
+    ]
+  },
+  {
+    "names": [
+      "Ronald Reagan",
+      "Reagan"
+    ],
+    "facts": [
+      "was governor of California before being elected to the presidency",
+      "starred in several movies before his presidency, including 'Bedtime for Bonzo', which featured a chimpanzee",
+      "was nicknamed 'The Gipper'"
+    ]
+  },
+  {
+    "names": "George H. W. Bush",
+    "facts": [
+      "was the second president to be the father of another president",
+      "postponed attending college to become one of the Navy's youngest pilots during World War 2",
+      "presided over the Gulf War"
+    ]
+  },
+  {
+    "names": [
+      "Bill Clinton",
+      "Clinton"
+    ],
+    "facts": [
+      "was born in Hope, Arkansas",
+      "was a Rhodes Scholar and played the saxophone",
+      "was the first elected president to be impeached"
+    ]
+  },
+  {
+    "names": "George W. Bush",
+    "facts": [
+      "presided over the majority of the Iraq War",
+      "was the first president in the 21st century to win the election despite losing the popular vote",
+      "saw an upswing in popular support following the terrorist attacks of September 11th, 2001"
+    ]
+  },
+  {
+    "names": [
+      "Barack Obama",
+      "Obama"
+    ],
+    "facts": [
+      "was the nation's first African American president",
+      "was born in Hawaii",
+      "put forth the Affordable Care Act in his early years of presidency"
+    ]
+  },
+  {
+    "names": [
+      "Donald J. Trump",
+      "Trump",
+      "Donald Trump"
+    ],
+    "facts": [
+      "was the richest president in terms of net worth",
+      "was the first president with no previous experience in politics or the military",
+      "was a billionaire real-estate investor with a reality show"
+    ]
+  },
+  {
+    "names": [
+      "Joseph Biden",
+      "Biden",
+      "Joe Biden"
+    ],
+    "facts": [
+      "is the oldest person to have become president",
+      "was also the longest serving senator in the United States",
+      "ran with who would become America's first black vice president"
+    ]
+  }
+]
