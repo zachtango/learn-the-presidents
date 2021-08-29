@@ -1,3 +1,5 @@
+const Alexa = require('ask-sdk-core');
+
 const RandomPresIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
