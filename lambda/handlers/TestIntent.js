@@ -1,3 +1,5 @@
+const { modules } = require("./PresIntent");
+
 const TestIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -15,4 +17,4 @@ const TestIntentHandler = {
     }
 };
 
-exports.modules = TestIntentHandler;
+module.exports = TestIntentHandler;

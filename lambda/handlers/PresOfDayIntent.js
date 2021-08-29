@@ -13,4 +13,4 @@ const PresOfDayIntentHandler = {
     }
 };
 
-exports.modules = PresOfDayIntentHandler;
+module.exports = PresOfDayIntentHandler;

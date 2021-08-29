@@ -14,4 +14,4 @@ const RandomPresIntentHandler = {
     }
 };
 
-exports.modules = RandomPresIntentHandler;
+module.exports = RandomPresIntentHandler;

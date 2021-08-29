@@ -13,4 +13,4 @@ const PresIntentHandler = {
     }
 };
 
-exports.modules = PresIntentHandler;
+module.exports = PresIntentHandler;
