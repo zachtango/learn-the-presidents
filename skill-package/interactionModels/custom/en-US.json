@@ -1,40 +1,127 @@
 {
   "interactionModel": {
-    "languageModel": {
-      "invocationName": "learn the presidents",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "HelloWorldIntent",
-          "slots": [],
-          "samples": [
-            "hello",
-            "how are you",
-            "say hi world",
-            "say hi",
-            "hi",
-            "say hello world",
-            "say hello"
+      "languageModel": {
+          "invocationName": "change me",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": []
+              },
+              {
+                  "name": "PresIntent",
+                  "slots": [
+                      {
+                          "name": "president",
+                          "type": "presidents"
+                      }
+                  ],
+                  "samples": [
+                      "tell me about {president}"
+                  ]
+              },
+              {
+                  "name": "RandomPresIntent",
+                  "slots": [],
+                  "samples": [
+                      "tell me about a president"
+                  ]
+              },
+              {
+                  "name": "PresOfDayIntent",
+                  "slots": [],
+                  "samples": [
+                      "who's the president of the day"
+                  ]
+              },
+              {
+                  "name": "TestIntent",
+                  "slots": [
+                      {
+                          "name": "difficulty",
+                          "type": "testDifficulty",
+                          "samples": [
+                              "{difficulty}"
+                          ]
+                      }
+                  ],
+                  "samples": [
+                      "I want to take the test",
+                      "I want to take the {difficulty} test"
+                  ]
+              }
+          ],
+          "types": [
+              {
+                  "name": "testDifficulty",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "normal"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "hard"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "presidents",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "george washington"
+                          }
+                      }
+                  ]
+              }
           ]
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        }
-      ],
-      "types": []
-    }
-  },
-  "version": "1"
+      },
+      "dialog": {
+          "intents": [
+              {
+                  "name": "TestIntent",
+                  "delegationStrategy": "SKILL_RESPONSE",
+                  "confirmationRequired": false,
+                  "prompts": {},
+                  "slots": [
+                      {
+                          "name": "difficulty",
+                          "type": "testDifficulty",
+                          "confirmationRequired": false,
+                          "elicitationRequired": true,
+                          "prompts": {
+                              "elicitation": "Elicit.Slot.1290698327207.1048357287146"
+                          }
+                      }
+                  ]
+              }
+          ],
+          "delegationStrategy": "ALWAYS"
+      },
+      "prompts": [
+          {
+              "id": "Elicit.Slot.1290698327207.1048357287146",
+              "variations": [
+                  {
+                      "type": "PlainText",
+                      "value": "what difficulty?"
+                  }
+              ]
+          }
+      ]
+  }
 }
