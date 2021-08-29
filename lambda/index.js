@@ -5,6 +5,11 @@
  * */
 const Alexa = require('ask-sdk-core');
 
+const TestIntentHandler = require('./handlers/TestIntent');
+const PresIntentHandler = require('./handlers/PresIntent');
+const RandomPresIntentHandler = require('./handlers/RandomPresIntent');
+const PresOfDayIntentHandler = require('./handlers/PresOfDayIntent');
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -15,39 +20,6 @@ const LaunchRequestHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
-            .getResponse();
-    }
-};
-
-const TestIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'TestIntent';
-    },
-    handle(handlerInput) {
-        const speakOutput = 'Hello World! Test';
-
-        const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput + DIFFICULTY)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
-};
-
-const RandomPresIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RandomPresIntent';
-    },
-    handle(handlerInput) {
-        const speakOutput = 'Hello World! Test';
-
-        
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
@@ -164,6 +136,8 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         TestIntentHandler,
         RandomPresIntentHandler,
+        PresIntentHandler,
+        PresOfDayIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
