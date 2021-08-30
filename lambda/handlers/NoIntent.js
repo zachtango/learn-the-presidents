@@ -8,7 +8,7 @@ const NoIntentHandler = {
           && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.NoIntent';
   },
   handle(handlerInput) {
-      // clearQuestion();
+      clearQuestion(handlerInput);
       const response = `${getCasualResponse()}.`;
 
       return handlerInput.responseBuilder
