@@ -1,5 +1,5 @@
 const Alexa = require('ask-sdk-core');
-const { setQuestion, QUESTION_NAMES } = require('../functions/setQuestion');
+const { setQuestion, QUESTION_NAMES } = require('../functions/questionManagement');
 const { getRandomPresidentText } = require('../functions/presidentFunctions');
 
 const RandomPresIntentHandler = {

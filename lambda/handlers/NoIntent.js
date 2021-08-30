@@ -1,5 +1,5 @@
 const Alexa = require('ask-sdk-core');
-const { clearQuestion } = require('../functions/setQuestion');
+const { clearQuestion } = require('../functions/questionManagement');
 const { getCasualResponse } = require("../functions/responses");
 
 const NoIntentHandler = {
@@ -8,7 +8,7 @@ const NoIntentHandler = {
           && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.NoIntent';
   },
   handle(handlerInput) {
-      clearQuestion();
+      // clearQuestion();
       const response = `${getCasualResponse()}.`;
 
       return handlerInput.responseBuilder
