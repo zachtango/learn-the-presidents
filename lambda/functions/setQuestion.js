@@ -10,4 +10,8 @@ function setQuestion(handlerInput, questionAsked) {
   handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 }
 
-module.exports = { setQuestion, QUESTION_NAMES };
+function clearQuestion(handlerInput) {
+  setQuestion(handlerInput, null);
+}
+
+module.exports = { setQuestion, clearQuestion, QUESTION_NAMES };
