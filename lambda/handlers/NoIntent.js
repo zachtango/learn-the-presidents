@@ -9,9 +9,10 @@ const NoIntentHandler = {
   },
   handle(handlerInput) {
       clearQuestion();
+      const response = `${getCasualResponse()}.`;
 
       return handlerInput.responseBuilder
-          .speak(`${getCasualResponse()}.`)
+          .speak(response)
           .getResponse();
   }
 };
