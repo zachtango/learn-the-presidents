@@ -35,7 +35,10 @@
           "name": "RandomPresIntent",
           "slots": [],
           "samples": [
-            "tell me about a president"
+            "tell me about a president",
+            "tell me about a random president",
+            "give me a random president",
+            "random president"
           ]
         },
         {

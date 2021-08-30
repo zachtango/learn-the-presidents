@@ -11,4 +11,19 @@ function getRandomPresident() {
   return _.sample(PRESIDENTS);
 }
 
-module.exports = { getRandomPresident }
+/**
+ * @returns A string fluidly describing the president's name and each fact about him/her.
+ */
+function getRandomPresidentText() {
+  const CONJUNCTIONS = ["Also", "Additionally", "Furthermore"]
+  const president = getRandomPresident();
+  const presidentFirstName = president.names[0];
+
+  let responseText = `Okay. Your random president is ${presidentFirstName}. He ${president.facts[0]}.`
+  for (let additionalFact of president.facts.splice(1)) {
+      responseText += ` ${_.sample(CONJUNCTIONS)}, he ${additionalFact}.`
+  }
+  return responseText;
+}
+
+module.exports = { getRandomPresident, getRandomPresidentText }

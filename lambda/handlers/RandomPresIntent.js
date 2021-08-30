@@ -1,4 +1,5 @@
 const Alexa = require('ask-sdk-core');
+const { getRandomPresidentText } = require('../functions/presidentFunctions');
 
 const RandomPresIntentHandler = {
     canHandle(handlerInput) {
@@ -6,11 +7,10 @@ const RandomPresIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RandomPresIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello World! Test';
+        const responseText = getRandomPresidentText();
 
-        
         return handlerInput.responseBuilder
-            .speak(speakOutput)
+            .speak(responseText)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }

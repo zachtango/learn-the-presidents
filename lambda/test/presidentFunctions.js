@@ -1,5 +1,5 @@
 const { assert } = require("chai")
-const { getRandomPresident } = require("../functions/presidentFunctions")
+const { getRandomPresident, getRandomPresidentText } = require("../functions/presidentFunctions")
 
 describe("getRandomPresident()", function() {
   const pres = getRandomPresident();
@@ -12,5 +12,17 @@ describe("getRandomPresident()", function() {
   })
   it("should have an array of facts", function() {
     assert.isArray(pres.facts);
+  })
+})
+
+describe("getRandomPresidentText()", function() {
+  const text = getRandomPresidentText();
+  // console.log(text);
+
+  it("should be a string", function() {
+    assert.isString(text);
+  })
+  it("should have a length greater than 0", function() {
+    assert.isTrue(text.length > 0);
   })
 })
