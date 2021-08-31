@@ -3,6 +3,7 @@ const Alexa = require('ask-sdk-core');
 // Session attributes to persist throughout lifespan of current skill session
 const TestIntentHandler = {
     canHandle(handlerInput) {
+        console.log("TEST INTENT HANDLER");
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'TestIntent';
     },
