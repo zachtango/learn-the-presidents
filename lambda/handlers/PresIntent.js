@@ -1,5 +1,4 @@
 const Alexa = require('ask-sdk-core');
-const { getSlotId } = require("../functions/getSlotId");
 
 const PresIntentHandler = {
     canHandle(handlerInput) {
