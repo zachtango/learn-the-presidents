@@ -1,21 +1,49 @@
 // Session attributes to persist throughout lifespan of current skill session
-const TestIntentHandler = {
+const StartedInProgressTestIntentHandler = {
     canHandle(handlerInput) {
-        console.log('TEST INTENT CAN HANDLE');
+        console.log('STARTED TEST INTENT CAN HANDLE');
 
         const request = handlerInput.requestEnvelope.request;
         
-        console.log(request);
+        console.log(request.dialogState);
         return request.type === 'IntentRequest'
-            && request.intent.name === 'TestIntent';
+            && request.intent.name === 'TestIntent'
+            && request.dialogState !== 'COMPLETED';
     },
     handle(handlerInput) {
-        console.log('TEST INTENT HANDLER');
+        console.log('STARTED TEST INTENT HANDLER');
+        const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty;
+       
+        if(DIFFICULTY){
+            return handlerInput.responseBuilder
+                .addDelegateDirective()
+                .getResponse();
+        } else{
+            const speakOutput = 'What difficulty would you like to take the test at?';
 
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .addElicitSlotDirective('difficulty')
+                .getResponse();
+        }
+
+        
+    }
+};
+
+const CompletedTestIntentHandler = {
+    canHandler(handlerInput){
+        const request = handlerInput.requestEnvelope.request;
+        
+        return request.type === "IntentRequest"
+            && request.intent.name === "TestIntent"
+            && request.dialogState === "COMPLETED";
+    },
+    handle(handlerInput){
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
-        let speakOutput;
+        let speakOutput
         if(!sessionAttributes.test){
             // test just started
 
@@ -36,12 +64,11 @@ const TestIntentHandler = {
         return handlerInput.responseBuilder
             .addDelegateDirective({
                 name: 'AnswerIntent',
-                confirmationStatus: 'NONE',
-                slots: {}
+                confirmationStatus: 'NONE'
             })
             .speak(speakOutput)
             .getResponse();
     }
-};
+}
 
-module.exports = TestIntentHandler;
+module.exports = {StartedInProgressTestIntentHandler, CompletedTestIntentHandler};

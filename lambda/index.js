@@ -5,7 +5,7 @@
  * */
 const Alexa = require('ask-sdk-core');
 
-const TestIntentHandler = require('./handlers/TestIntent');
+const {StartedInProgressTestIntentHandler, CompletedTestIntentHandler} = require('./handlers/TestIntent');
 const PresIntentHandler = require('./handlers/PresIntent');
 const RandomPresIntentHandler = require('./handlers/RandomPresIntent');
 const PresOfDayIntentHandler = require('./handlers/PresOfDayIntent');
@@ -136,7 +136,8 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        TestIntentHandler,
+        StartedInProgressTestIntentHandler,
+        CompletedTestIntentHandler,
         RandomPresIntentHandler,
         PresIntentHandler,
         PresOfDayIntentHandler,
