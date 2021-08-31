@@ -25,7 +25,7 @@ const AnswerIntentHandler = {
             .addDelegateDirective({
                 name: 'TestIntent',
                 confirmationStatus: 'NONE',
-                
+                slots:{}
             })
             .speak(presidentId)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
