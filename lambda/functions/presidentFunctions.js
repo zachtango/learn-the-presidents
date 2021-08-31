@@ -33,7 +33,8 @@ function getPresDescription(president) {
 }
 
 function getPresDescriptionFromId(id) {
-  return getPresDescription(id);
+  const president = PRESIDENTS[id];
+  return getPresDescription(president);
 }
 
 function getPresId(president) {

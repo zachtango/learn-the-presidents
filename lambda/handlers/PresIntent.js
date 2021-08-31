@@ -9,6 +9,7 @@ const PresIntentHandler = {
     handle(handlerInput) {
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
+        console.log(`President ID is ${presidentId}.`);
         const presDescription = getPresDescriptionFromId(presidentId);
 
         return handlerInput.responseBuilder
