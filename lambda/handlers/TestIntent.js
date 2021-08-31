@@ -54,6 +54,7 @@ const CompletedTestIntentHandler = {
     },
     handle(handlerInput){
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
+        handlerInput.requestEnvelope.request.dialogState = "STARTED";
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         console.log(sessionAttributes);
         let speakOutput;
