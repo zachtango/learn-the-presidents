@@ -1,25 +1,27 @@
 const Alexa = require('ask-sdk-core');
 
-const QuestionTestIntentHandler = {
+const QuestionIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'TestIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'QuestionIntent';
     },
     handle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManger.getSessionAttributes();
 
-        const speakOutput = 'Let me get that started for you';
-        const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
-
+        const DIFFICULTY = sessionAttributes.test.DIFFICULTY;
+        const questionNum = sessionAttributes.test.questionNum;
+        
+        const speakOutput = DIFFICULTY + questionNum;
+        
         return handlerInput.responseBuilder
             .addDelegateDirective({
                 name: 'AnswerIntent',
                 confirmationStatus: 'NONE',
-                slots: {}// difficulty
+                slots: {}
             })
             .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
 
-module.exports = QuestionTestIntentHandler;
+module.exports = QuestionIntentHandler;
