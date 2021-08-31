@@ -55,12 +55,15 @@ const CompletedTestIntentHandler = {
     handle(handlerInput){
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-
+        console.log(sessionAttributes);
         let speakOutput;
         if(sessionAttributes.test){
-            // test just started
+            // test in progress
+            console.log('test in progress');
             speakOutput = `Question ${sessionAttributes.test.questionNum}`;
         } else{
+            // test just started
+            console.log('test just started');
             sessionAttributes.test = {
                 difficulty: DIFFICULTY,
                 questionNum: 1
