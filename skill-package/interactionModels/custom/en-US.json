@@ -521,7 +521,6 @@
             "intents": [
                 {
                     "name": "TestIntent",
-                    "delegationStrategy": "ALWAYS",
                     "confirmationRequired": false,
                     "prompts": {},
                     "slots": [
