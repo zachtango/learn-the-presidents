@@ -21,7 +21,7 @@ const TestIntentHandler = {
 
         return handlerInput.responseBuilder
             .addDelegateDirective({
-                name: 'AnswerIntent',
+                name: 'QuestionIntent',
                 confirmationStatus: 'NONE',
                 slots: {}
             })

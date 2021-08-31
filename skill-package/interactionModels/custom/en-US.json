@@ -90,6 +90,11 @@
                         "The answer is {president}",
                         "{president}"
                     ]
+                },
+                {
+                    "name": "QuestionIntent",
+                    "slots": [],
+                    "samples": []
                 }
             ],
             "types": [
