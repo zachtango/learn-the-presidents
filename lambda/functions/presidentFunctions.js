@@ -16,16 +16,16 @@ function getRandomPresident() {
  */
 function getRandomPresidentText() {
   const president = getRandomPresident();
-  const responseText = getPresDescription(president);
+  const responseText = getPresDescription(president, true);
   return responseText;
 }
 
-function getPresDescription(president) {
+function getPresDescription(president, isRandom = false) {
   const CONJUNCTIONS = ["Also", "Additionally", "Furthermore"]
   const presidentFirstName = president.names[0];
   const position = getPresPosition(president);
 
-  let responseText = `Okay. Your random president is ${presidentFirstName}. He was the ${position} president. He ${president.facts[0]}.`
+  let responseText = `Okay. ${isRandom ? `Your random president is ${presidentFirstName}. He` : presidentFirstName} was the ${position} president. He ${president.facts[0]}.`
   for (let additionalFact of president.facts.splice(1)) {
       responseText += ` ${_.sample(CONJUNCTIONS)}, he ${additionalFact}.`
   }
