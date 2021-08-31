@@ -32,7 +32,7 @@ const StartedInProgressTestIntentHandler = {
 };
 
 const CompletedTestIntentHandler = {
-    canHandler(handlerInput){
+    canHandle(handlerInput){
         const request = handlerInput.requestEnvelope.request;
         console.log('COMPELTED INTENT CAN HANDLE', request)
         return request.type === "IntentRequest"
