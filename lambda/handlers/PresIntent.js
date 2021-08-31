@@ -1,4 +1,5 @@
 const Alexa = require('ask-sdk-core');
+const { getPresDescriptionFromId } = require('../functions/presidentFunctions');
 
 const PresIntentHandler = {
     canHandle(handlerInput) {
@@ -8,11 +9,10 @@ const PresIntentHandler = {
     handle(handlerInput) {
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
-        console.log(presidentId)
+        const presDescription = getPresDescriptionFromId(presidentId);
 
         return handlerInput.responseBuilder
-            .speak("Gekko")
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .speak(presDescription)
             .getResponse();
     }
 };
