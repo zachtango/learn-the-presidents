@@ -10,6 +10,7 @@ const PresIntentHandler = require('./handlers/PresIntent');
 const RandomPresIntentHandler = require('./handlers/RandomPresIntent');
 const PresOfDayIntentHandler = require('./handlers/PresOfDayIntent');
 const NoIntentHandler = require('./handlers/NoIntent');
+const AnswerIntentHandler = require('./handlers/AnswerIntent');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -140,6 +141,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         PresIntentHandler,
         PresOfDayIntentHandler,
         NoIntentHandler,
+        AnswerIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
