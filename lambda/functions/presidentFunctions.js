@@ -16,16 +16,42 @@ function getRandomPresident() {
  */
 function getRandomPresidentText() {
   const president = getRandomPresident();
-  const responseText = getPresDescription(president, true);
+  const responseText = getPresDescription(president, DESC_TYPES.RANDOM);
   return responseText;
 }
 
-function getPresDescription(president, isRandom = false) {
+const DESC_TYPES = {
+  RANDOM: "RANDOM",
+  POTD: "POTD"
+}
+
+/**
+ * 
+ * @param {Object} president 
+ * @param {String} descType 
+ * @returns a string describing the president based on what information is desired
+ */
+function getPresDescription(president, descType) {
   const CONJUNCTIONS = ["Also", "Additionally", "Furthermore"]
   const presidentFirstName = president.names[0];
   const position = getPresPosition(president);
+  
+  let responseText = "Okay. "
+  switch(descType) {
+    case DESC_TYPES.RANDOM: {
+      responseText  += `Your random president is ${presidentFirstName}. He`;
+      break;
+    }
+    case DESC_TYPES.POTD: {
+      responseText += `The president of the day is ${presidentFirstName}`;
+      break;
+    }
+    default: {
+      responseText += presidentFirstName;
+    }
+  }
+  responseText = `${responseText} was the ${position} president. He ${president.facts[0]}.`
 
-  let responseText = `Okay. ${isRandom ? `Your random president is ${presidentFirstName}. He` : presidentFirstName} was the ${position} president. He ${president.facts[0]}.`
   for (let additionalFact of president.facts.splice(1)) {
       responseText += ` ${_.sample(CONJUNCTIONS)}, he ${additionalFact}.`
   }
@@ -61,4 +87,4 @@ function getPresPosition(president) {
   }
 }
 
-module.exports = { getRandomPresident, getRandomPresidentText, getPresDescriptionFromId }
+module.exports = { getRandomPresident, getRandomPresidentText, getPresDescriptionFromId, getPresDescription }
