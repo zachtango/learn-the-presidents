@@ -7,8 +7,9 @@ const PresIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PresIntent';
     },
     handle(handlerInput) {
-        const president_id = Alexa.getSlot(requestEnvelope, 'president').resolutions.resolutionsPerAuthority[0].values[0].value.id;
-        console.log(president_id)
+        const presidentSlot = Alexa.getSlot(requestEnvelope, 'president');
+        const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
+        console.log(presidentId)
 
         return handlerInput.responseBuilder
             .speak("Gekko")
