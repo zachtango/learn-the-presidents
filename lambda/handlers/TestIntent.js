@@ -57,21 +57,16 @@ const CompletedTestIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         let speakOutput;
-        if(!sessionAttributes.test){
+        if(sessionAttributes.test){
             // test just started
-
+            speakOutput = `Question ${sessionAttributes.test.questionNum}`;
+        } else{
             sessionAttributes.test = {
                 difficulty: DIFFICULTY,
                 questionNum: 1
             };
 
             speakOutput = 'Let me get that started for you. Question 1';
-
-            
-
-        } else{
-            // test in progress
-            speakOutput = `Question ${sessionAttributes.test.questionNum}`;
         }
 
         return handlerInput.responseBuilder
