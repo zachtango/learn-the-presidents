@@ -28,7 +28,9 @@
                       }
                   ],
                   "samples": [
-                      "tell me about {president}"
+                      "tell me about {president}",
+                      "teach me about {president}",
+                      "who was {president}"
                   ]
               },
               {
