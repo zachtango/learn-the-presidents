@@ -1,5 +1,4 @@
 const Alexa = require('ask-sdk-core');
-const { S3PersistenceAdapter } = require('ask-sdk-s3-persistence-adapter');
 
 // Session attributes to persist throughout lifespan of current skill session
 const TestIntentHandler = {
@@ -17,8 +16,6 @@ const TestIntentHandler = {
         };
 
         const speakOutput = 'Let me get that started for you';
-        
-        S3PersistenceAdapter;
 
         return handlerInput.responseBuilder
             .addDelegateDirective({
