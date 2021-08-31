@@ -24,7 +24,7 @@ const AnswerIntentHandler = {
         return handlerInput.responseBuilder
             .addDelegateDirective({
                 name: 'TestIntent',
-                confirmationStatus: 'CONFIRMED',
+                confirmationStatus: 'NONE',
                 slots: {
                     difficulty: {
                         name: "difficulty",
