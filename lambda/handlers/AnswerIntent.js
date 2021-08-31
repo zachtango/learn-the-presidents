@@ -24,7 +24,15 @@ const AnswerIntentHandler = {
         return handlerInput.responseBuilder
             .addDelegateDirective({
                 name: 'TestIntent',
-                confirmationStatus: 'NONE'
+                confirmationStatus: 'NONE',
+                slots: {
+                    difficulty: {
+                        name: 'difficulty',
+                        value: 'hard',
+                        confirmationStatus: 'NONE',
+                        source: 'USER'
+                    }
+                }
             })
             .speak(presidentId)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
