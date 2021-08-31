@@ -8,6 +8,9 @@ slotDicts = []
 with open("president_info.json", "r") as f:
   data = json.load(f)
   for i in range(len(data)):
+    # don't repeat grover cleveland
+    if i == 23:
+      continue
     pres = data[i]
     mainName = pres["names"][0]
     secondaryNames = pres["names"][1:]
