@@ -16,7 +16,7 @@ const StartedInProgressTestIntentHandler = {
        
         if(DIFFICULTY){
             return handlerInput.responseBuilder
-                .addDelegateDirective(handlerInput.requestEnvelope.intent)
+                .addDelegateDirective(handlerInput.requestEnvelope.request.intent)
                 .getResponse();
         } else{
             const speakOutput = 'What difficulty would you like to take the test at?';
