@@ -2,10 +2,13 @@ const Alexa = require('ask-sdk-core');
 
 const AnswerIntentHandler = {
     canHandle(handlerInput) {
+        console.log('ANSWER INTENT CAN HANDLE');
+
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnswerIntent';
     },
     handle(handlerInput) {
+        console.log('ANSWER INTENT HANDLER');
 
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
@@ -21,7 +24,7 @@ const AnswerIntentHandler = {
         return handlerInput.responseBuilder
             .addDelegateDirective({
                 name: 'TestIntent',
-                confirmationStatus: 'NONE',
+                confirmationStatus: 'CONFIRMED',
                 slots: {
                     difficulty: {
                         name: "difficulty",
