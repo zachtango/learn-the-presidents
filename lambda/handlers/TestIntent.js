@@ -6,12 +6,17 @@ const TestIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'TestIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello World! Test';
 
+        const speakOutput = 'Let me get that started for you';
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
 
         return handlerInput.responseBuilder
-            .speak(speakOutput + DIFFICULTY)
+            .addDelegateDirective({
+                name: 'AnswerIntent',
+                confirmationStatus: 'NONE',
+                slots: {}// difficulty
+            })
+            .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
