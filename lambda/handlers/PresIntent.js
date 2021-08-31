@@ -6,7 +6,7 @@ const PresIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PresIntent';
     },
     handle(handlerInput) {
-        const president_id = handlerInput.requestEnvelope.request.getIntentName.slots.president.id;
+        const president_id = handlerInput.requestEnvelope.request.slots.president.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         console.log(president_id)
 
         return handlerInput.responseBuilder
