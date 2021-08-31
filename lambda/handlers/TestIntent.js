@@ -5,7 +5,7 @@ const StartedInProgressTestIntentHandler = {
 
         const request = handlerInput.requestEnvelope.request;
         
-        console.log(request.dialogState);
+        console.log(request);
         return request.type === 'IntentRequest'
             && request.intent.name === 'TestIntent'
             && request.dialogState !== 'COMPLETED';
@@ -16,7 +16,7 @@ const StartedInProgressTestIntentHandler = {
        
         if(DIFFICULTY){
             return handlerInput.responseBuilder
-                .addDelegateDirective()
+                .addDelegateDirective(handlerInput.requestEnvelope.intent)
                 .getResponse();
         } else{
             const speakOutput = 'What difficulty would you like to take the test at?';
@@ -43,7 +43,7 @@ const CompletedTestIntentHandler = {
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
-        let speakOutput
+        let speakOutput;
         if(!sessionAttributes.test){
             // test just started
 
