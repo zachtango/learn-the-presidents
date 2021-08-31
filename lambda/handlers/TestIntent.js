@@ -10,7 +10,7 @@ const TestIntentHandler = {
     handle(handlerInput) {
         console.log('TEST INTENT HANDLER');
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty.value;
-        const sessionAttributes = handlerInput.attributesManger.getSessionAttributes();
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         sessionAttributes.test = {
             difficulty: DIFFICULTY,
