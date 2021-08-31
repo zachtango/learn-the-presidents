@@ -15,7 +15,7 @@ const StartedInProgressTestIntentHandler = {
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const currentIntent = handlerInput.requestEnvelope.request.intent;
-        console.log(sessionAttributes.test);
+        console.log(currentIntent);
 
         if(DIFFICULTY){
             return handlerInput.responseBuilder
