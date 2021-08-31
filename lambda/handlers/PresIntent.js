@@ -1,4 +1,5 @@
 const Alexa = require('ask-sdk-core');
+const { getSlotId } = require("../functions/getSlotId");
 
 const PresIntentHandler = {
     canHandle(handlerInput) {
@@ -6,7 +7,7 @@ const PresIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PresIntent';
     },
     handle(handlerInput) {
-        const president_id = handlerInput.requestEnvelope.request.slots.president.resolutions.resolutionsPerAuthority[0].values[0].value.id;
+        const president_id = handlerInput.requestEnvelope.intent.slots.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         console.log(president_id)
 
         return handlerInput.responseBuilder
