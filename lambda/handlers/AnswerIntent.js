@@ -29,7 +29,7 @@ const AnswerIntentHandler = {
                     difficulty: {
                         name: "difficulty",
                         value: sessionAttributes.test.difficulty,
-                        confirmationStatus: "NONE"
+                        confirmationStatus: "CONFIRMED"
                     }
                 }
             })
