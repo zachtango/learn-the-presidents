@@ -13,18 +13,30 @@ const StartedInProgressTestIntentHandler = {
     handle(handlerInput) {
         console.log('STARTED TEST INTENT HANDLER');
         const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty;
-       
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const currentIntent = handlerInput.requestEnvelope.request.intent;
+
         if(DIFFICULTY){
             return handlerInput.responseBuilder
-                .addDelegateDirective(handlerInput.requestEnvelope.request.intent)
+                .addDelegateDirective(currentIntent)
                 .getResponse();
         } else{
             const speakOutput = 'What difficulty would you like to take the test at?';
+            
+            if(sessionAttributes.test){
+                // test in progress
+                currentIntent.slots.difficulty.value = sessionAttributes.test.difficulty;
+                return handlerInput.responseBuilder
+                    .addDelegateDirective(currentIntent)
+                    .getResponse();
 
-            return handlerInput.responseBuilder
-                .speak(speakOutput)
-                .addElicitSlotDirective('difficulty')
-                .getResponse();
+            } else {
+                // test just started
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .addElicitSlotDirective('difficulty')
+                    .getResponse();
+            }
         }
 
         
