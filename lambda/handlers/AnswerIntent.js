@@ -7,7 +7,7 @@ const AnswerIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const request = handlerInput.requestEnvelope.request;
         return request.type === 'IntentRequest'
-            && request.intent.name === 'TestIntent'
+            && request.intent.name === 'AnswerIntent'
             && sessionAttributes.test
             && sessionAttributes.test.isRunning;
     },
@@ -25,7 +25,7 @@ const AnswerIntentHandler = {
             
         }
 
-        const speakOutput = `question ${session.test.questionNum}`;
+        const speakOutput = `question ${sessionAttributes.test.questionNum}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
