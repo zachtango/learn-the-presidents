@@ -4,8 +4,12 @@ const AnswerIntentHandler = {
     canHandle(handlerInput) {
         console.log('ANSWER INTENT CAN HANDLE');
 
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnswerIntent';
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest'
+            && request.intent.name === 'TestIntent'
+            && sessionAttributes.test
+            && sessionAttributes.test.isRunning;
     },
     handle(handlerInput) {
         console.log('ANSWER INTENT HANDLER');
@@ -21,21 +25,11 @@ const AnswerIntentHandler = {
             
         }
 
+        const speakOutput = `question ${session.test.questionNum}`;
+
         return handlerInput.responseBuilder
-            .addDelegateDirective({
-                name: 'TestIntent',
-                confirmationStatus: 'NONE',
-                slots: {
-                    difficulty: {
-                        name: 'difficulty',
-                        value: 'hard',
-                        confirmationStatus: 'NONE',
-                        source: 'USER'
-                    }
-                }
-            })
-            .speak(presidentId)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .speak(speakOutput)
+            .reprompt(speakOutput)
             .getResponse();
     }
 };
