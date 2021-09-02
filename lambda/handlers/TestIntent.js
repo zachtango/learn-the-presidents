@@ -11,7 +11,7 @@ const TestIntentHandler = {
     },
     handle(handlerInput) {
         console.log('STARTED TEST INTENT HANDLER');
-        const DIFFICULTY = Alexa.getSlot(handlerInput.requestEnvelope, 'difficulty');
+        const DIFFICULTY = Alexa.getSlot(handlerInput.requestEnvelope, 'difficulty').value;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
                 
         // test just started
