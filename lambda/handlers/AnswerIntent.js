@@ -29,10 +29,6 @@ const AnswerIntentHandler = {
             test.attempts = 0;
             speakOutput = `question ${test.questionNum}`;
         } else{
-            if(!test.hintMessageGiven){
-                speakOutput = 'Wrong! If you\'d like a hint. Just say, give me a hint.';
-                test.hintMessageGiven = true;
-            }
             
             test.attempts++;
 
@@ -42,7 +38,12 @@ const AnswerIntentHandler = {
                 speakOutput = `Wrong. Lets move on. question ${test.questionNum}`;
                 
             } else{
-                speakOutput = 'Wrong! Try again';
+                if(!test.hintMessageGiven){
+                    speakOutput = 'Wrong! If you\'d like a hint. Just say, give me a hint.';
+                    test.hintMessageGiven = true;
+                } else{
+                    speakOutput = 'Wrong! Try again';
+                }
             }
             
 
