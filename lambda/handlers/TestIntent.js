@@ -16,7 +16,10 @@ const TestIntentHandler = {
         sessionAttributes.test = {
             difficulty: DIFFICULTY,
             questionNum: 1,
-            isRunning: true
+            attempts: 0,
+            isRunning: true,
+            numCorrect: 0,
+            hintMessageGiven: false
         };
 
         const speakOutput = 'question 1';

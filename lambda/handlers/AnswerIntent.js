@@ -18,14 +18,35 @@ const AnswerIntentHandler = {
 
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
-        const correct = true;
+        const correct = presidentId === test.questionNum - 1;
+        const test = sessionAttributes.test;
+        let speakOutput;
 
         if(correct){ // check answer
-            sessionAttributes.test.questionNum += 1;    
+            test.questionNum++;
+            test.numCorrect++;
+            test.attempts = 0;
+            speakOutput = `question ${test.questionNum}`;
+        } else{
+            if(!test.hintMessageGiven){
+                speakOutput = 'Wrong! If you\'d like a hint. Just say, give me a hint.';
+                test.hintMessageGiven = true;
+            }
             
+            test.attempts++;
+
+            if(test.attempts >= 2){
+                test.questionNum++;
+                test.attempts = 0;
+                speakOutput = `Wrong. Lets move on. question ${test.questionNum}`;
+                
+            } else{
+                speakOutput = 'Wrong! Try again';
+            }
+            
+
         }
 
-        const speakOutput = `question ${sessionAttributes.test.questionNum}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
