@@ -19,7 +19,7 @@ const AnswerIntentHandler = {
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         const test = sessionAttributes.test;
-        const correct = parseInt(presidentId) === (test.questionNum - 1);
+        const correct = parseInt(presidentId) === test.problems[test.questionNum].answer;
         console.log(presidentId, test.questionNum, correct);
         let speakOutput;
 
@@ -27,7 +27,7 @@ const AnswerIntentHandler = {
             test.questionNum++;
             test.numCorrect++;
             test.attempts = 0;
-            speakOutput = `question ${test.questionNum}`;
+            speakOutput = test.problems[test.questionNum].question;
         } else{
             
             test.attempts++;
@@ -35,7 +35,7 @@ const AnswerIntentHandler = {
             if(test.attempts >= 2){
                 test.questionNum++;
                 test.attempts = 0;
-                speakOutput = `Wrong. Lets move on. question ${test.questionNum}`;
+                speakOutput = `Wrong. Lets move on. ${test.problems[test.questionNum].question}`;
                 
             } else{
                 if(!test.hintMessageGiven){
@@ -45,8 +45,6 @@ const AnswerIntentHandler = {
                     speakOutput = 'Wrong! Try again';
                 }
             }
-            
-
         }
 
 
