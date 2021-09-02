@@ -9,7 +9,7 @@ const TestIntentHandler = {
     },
     handle(handlerInput) {
         console.log('STARTED TEST INTENT HANDLER');
-        const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.difficulty;
+        const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.testDifficulty;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
                 
         // test just started
