@@ -1,3 +1,5 @@
+const Alexa = require('ask-sdk-core');
+
 // Session attributes to persist throughout lifespan of current skill session
 const TestIntentHandler = {
     canHandle(handlerInput) {
@@ -9,7 +11,7 @@ const TestIntentHandler = {
     },
     handle(handlerInput) {
         console.log('STARTED TEST INTENT HANDLER');
-        const DIFFICULTY = handlerInput.requestEnvelope.request.intent.slots.testDifficulty;
+        const DIFFICULTY = Alexa.getSlot(handlerInput.requestEnvelope, 'testDifficulty');
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
                 
         // test just started
