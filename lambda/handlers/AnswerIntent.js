@@ -47,6 +47,10 @@ const AnswerIntentHandler = {
             }
         }
 
+        if(test.questionNum === 5){
+            speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of 5`;
+            test.isRunning = false;
+        }
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
