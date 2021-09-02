@@ -23,7 +23,7 @@ const TestIntentHandler = {
         };
 
         const test = sessionAttributes.test;
-
+        console.log(DIFFICULTY);
         if(DIFFICULTY === 'normal'){
             test.problems = Array.from(new Array(46), (elem, index) => {
                 let presidentNumber = `${index + 1}`;
