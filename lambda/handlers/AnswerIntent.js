@@ -19,7 +19,7 @@ const AnswerIntentHandler = {
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         const test = sessionAttributes.test;
-        const correct = presidentId === (test.questionNum - 1);
+        const correct = parseInt(presidentId) === (test.questionNum - 1);
         console.log(presidentId, test.questionNum, correct);
         let speakOutput;
 
