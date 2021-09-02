@@ -20,7 +20,7 @@ const AnswerIntentHandler = {
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         const test = sessionAttributes.test;
         const correct = presidentId === (test.questionNum - 1);
-        console.log(presidentId, test.questionNum);
+        console.log(presidentId, test.questionNum, correct);
         let speakOutput;
 
         if(correct){ // check answer
