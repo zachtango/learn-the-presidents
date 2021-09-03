@@ -1,4 +1,6 @@
 const Alexa = require('ask-sdk-core');
+const _ = require("lodash");
+const PRESIDENTS = require('../data/president_info.json');
 
 // Session attributes to persist throughout lifespan of current skill session
 const TestIntentHandler = {
@@ -50,7 +52,20 @@ const TestIntentHandler = {
                 };
             });
         } else if(DIFFICULTY === 'hard'){
-            test.problems = [];
+            const order = _.shuffle(
+                Array.from(new Array(46), (elem, index) => {
+                    return index;
+                })
+            );
+
+            test.problems = Array.from(order, (elem) => {
+                return {
+                    question: `Who ${PRESIDENTS[elem].facts[0]}?`, // FIXME: make question random
+                    answer: elem
+                };
+            });
+            
+
         } else{
             console.log('invalid value in DIFFICULTY');
             return 0;
