@@ -59,8 +59,8 @@ const TestIntentHandler = {
             );
 
             test.problems = Array.from(order, (elem) => {
-                return {
-                    question: `Who ${PRESIDENTS[elem].facts[0]}?`, // FIXME: make question random
+                return { // FIXME: make question be asked in different ways
+                    question: `Who ${PRESIDENTS[elem].facts[Math.floor(Math.random() * 3)]}?`, // random number between 0 and 2 (3 facts total in array)
                     answer: elem
                 };
             });
