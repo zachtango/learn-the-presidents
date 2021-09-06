@@ -87,4 +87,55 @@ function getPresPosition(president) {
   }
 }
 
-module.exports = { getRandomPresident, getRandomPresidentText, getPresDescriptionFromId, getPresDescription }
+
+/**
+ *  
+ * @returns an array of objects (problems), a list of normal difficulty problems
+ */
+function genNormalProblems(){
+
+  return Array.from(new Array(46), (elem, index) => {
+    let presidentNumber = `${index + 1}`;
+
+    switch(index + 1){
+        case 1:
+            presidentNumber += 'st';
+            break;
+        case 2:
+            presidentNumber += 'nd';
+            break;
+        case 3:
+            presidentNumber += 'rd';
+            break;
+        default:
+            presidentNumber += 'th';
+    }
+
+    return {
+        question: `Who was the ${presidentNumber} president?`, // FIXME: switch up sayings
+        answer: index
+    };
+  });
+}
+
+/**
+ *  
+ * @returns an array of objects (problems), a list of hard difficulty problems
+ */
+function genHardProblems(){
+  // randomize order of presidents
+  const order = _.shuffle(
+    Array.from(new Array(46), (elem, index) => {
+        return index;
+    })
+  );
+
+  return Array.from(order, (elem) => {
+      return { // FIXME: make question be asked in different ways
+          question: `Who ${PRESIDENTS[elem].facts[Math.floor(Math.random() * 3)]}?`, // random number between 0 and 2 (3 facts total in array)
+          answer: elem
+      };
+  });
+}
+
+module.exports = { getRandomPresident, getRandomPresidentText, getPresDescriptionFromId, getPresDescription, genNormalProblems, genHardProblems }

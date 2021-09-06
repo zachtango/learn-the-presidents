@@ -1,6 +1,5 @@
 const Alexa = require('ask-sdk-core');
-const _ = require("lodash");
-const PRESIDENTS = require('../data/president_info.json');
+const { genNormalProblems, genHardProblems } = require('../functions/presidentFunctions');
 
 // Session attributes to persist throughout lifespan of current skill session
 const TestIntentHandler = {
@@ -29,48 +28,17 @@ const TestIntentHandler = {
         const test = sessionAttributes.test;
         console.log(DIFFICULTY);
         if(DIFFICULTY === 'normal'){
-            test.problems = Array.from(new Array(46), (elem, index) => {
-                let presidentNumber = `${index + 1}`;
 
-                switch(index + 1){
-                    case 1:
-                        presidentNumber += 'st';
-                        break;
-                    case 2:
-                        presidentNumber += 'nd';
-                        break;
-                    case 3:
-                        presidentNumber += 'rd';
-                        break;
-                    default:
-                        presidentNumber += 'th';
-                }
-
-                return {
-                    question: `Who was the ${presidentNumber} president?`,
-                    answer: index
-                };
-            });
+            test.problems = genNormalProblems();
+        
         } else if(DIFFICULTY === 'hard'){
-            const order = _.shuffle(
-                Array.from(new Array(46), (elem, index) => {
-                    return index;
-                })
-            );
-
-            test.problems = Array.from(order, (elem) => {
-                return { // FIXME: make question be asked in different ways
-                    question: `Who ${PRESIDENTS[elem].facts[Math.floor(Math.random() * 3)]}?`, // random number between 0 and 2 (3 facts total in array)
-                    answer: elem
-                };
-            });
             
+            test.problems = genHardProblems();
 
         } else{
             console.log('invalid value in DIFFICULTY');
             return 0;
         }
-
         
         const speakOutput = test.problems[0].question;
 
