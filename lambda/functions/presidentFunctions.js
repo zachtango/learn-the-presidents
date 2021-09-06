@@ -138,4 +138,25 @@ function genHardProblems(){
   });
 }
 
-module.exports = { getRandomPresident, getRandomPresidentText, getPresDescriptionFromId, getPresDescription, genNormalProblems, genHardProblems }
+/**
+ *  
+ * @returns a string that is the hint dialogue for a given president
+ */
+function genHint(index){
+
+  const fact = PRESIDENTS[index].facts[Math.floor(Math.random() * 3)];
+
+  const speakOutput = `This president ${fact}`; // FIXME: SWITCH UP SAYINGS
+
+  return speakOutput;
+}
+
+module.exports = { 
+  getRandomPresident, 
+  getRandomPresidentText, 
+  getPresDescriptionFromId, 
+  getPresDescription, 
+  genNormalProblems, 
+  genHardProblems, 
+  genHint 
+};

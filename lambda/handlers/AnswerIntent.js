@@ -18,12 +18,14 @@ const AnswerIntentHandler = {
 
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
         const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
-        const test = sessionAttributes.test;
-        const correct = parseInt(presidentId) === test.problems[test.questionNum].answer;
-        console.log(presidentId, test.questionNum, correct);
-        let speakOutput;
 
-        if(correct){ // check answer
+        const test = sessionAttributes.test;
+        const NUM_PROBLEMS = 5;
+
+        const answerIsCorrect = parseInt(presidentId) === test.problems[test.questionNum].answer;
+
+        let speakOutput;
+        if(answerIsCorrect){ // check answer
             test.questionNum++;
             test.numCorrect++;
             test.attempts = 0;
@@ -47,8 +49,8 @@ const AnswerIntentHandler = {
             }
         }
 
-        if(test.questionNum === 5){
-            speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of 5`;
+        if(test.questionNum === NUM_PROBLEMS){
+            speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}`;
             test.isRunning = false;
         }
 
