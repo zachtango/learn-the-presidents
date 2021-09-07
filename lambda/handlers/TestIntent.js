@@ -105,4 +105,4 @@ const ResumeTestIntentHandler = {
     }
 };
 
-module.exports = StartTestIntentHandler;
+module.exports = {StartTestIntentHandler, ResumeTestIntentHandler};
