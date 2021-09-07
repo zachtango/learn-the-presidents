@@ -10,7 +10,7 @@ const persistenceAdapter = new S3PersistenceAdapter({
     bucketName: process.env.S3_PERSISTENCE_BUCKET
 });
 
-const { StartTestIntentHandler, ResumeTestIntentHandler } = require('./handlers/TestIntent');
+const { StartTestIntentHandler, ResumeTestIntentHandler, DontResumeTestIntentHandler } = require('./handlers/TestIntent');
 const PresIntentHandler = require('./handlers/PresIntent');
 const RandomPresIntentHandler = require('./handlers/RandomPresIntent');
 const PresOfDayIntentHandler = require('./handlers/PresOfDayIntent');
@@ -174,6 +174,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         StartTestIntentHandler,
         ResumeTestIntentHandler,
+        DontResumeTestIntentHandler,
         AnswerIntentHandler,
         HintIntentHandler,
         RandomPresIntentHandler,

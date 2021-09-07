@@ -75,6 +75,8 @@ const ResumeTestIntentHandler = {
         console.log('RESUME TEST INTENT HANDLER');
         
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        sessionAttributes.resumeTest = null;
+        sessionAttributes.difficulty = null;
 
         console.log(JSON.stringify(sessionAttributes));
         
@@ -90,4 +92,24 @@ const ResumeTestIntentHandler = {
     }
 };
 
-module.exports = {StartTestIntentHandler, ResumeTestIntentHandler};
+const DontResumeTestIntentHandler = {
+    canHandle(handlerInput){
+        console.log('DONT RESUME TEST INTENT CAN HANDLE');
+        
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest'
+            && request.intent.name === 'AMAZON.NoIntent'
+            && sessionAttributes.resumeTest;
+    },
+    handle(handlerInput){
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const DIFFICULTY = sessionAttributes.difficulty;
+        sessionAttributes.resumeTest = null;
+        sessionAttributes.difficulty = null;
+
+
+    }
+};
+
+module.exports = {StartTestIntentHandler, ResumeTestIntentHandler, DontResumeTestIntentHandler};
