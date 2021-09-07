@@ -139,7 +139,7 @@ const LoadAttributesRequestInterceptor = {
     async process(handlerInput){
         const {attributesManager, requestEnvelope} = handlerInput;
         if(Alexa.isNewSession(requestEnvelope)){
-            const persistentAttributes = await attributesManager.getPersistentAttributes || {};
+            const persistentAttributes = await attributesManager.getPersistentAttributes() || {};
             console.log('Loading from persistent storage: ' + JSON.stringify(persistentAttributes));
             // copy persistent attributes to session attributes
             attributesManager.setSessionAttributes(persistentAttributes);
