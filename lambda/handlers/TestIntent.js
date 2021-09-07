@@ -16,7 +16,7 @@ const StartTestIntentHandler = {
         const DIFFICULTY = Alexa.getSlot(handlerInput.requestEnvelope, 'difficulty').value;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         
-        console.log(JSON.stringify(sessionAttributes));
+        console.log(JSON.stringify(sessionAttributes.test));
         let speakOutput;
         
         if(sessionAttributes.test){
