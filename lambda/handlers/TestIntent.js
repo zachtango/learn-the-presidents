@@ -20,6 +20,8 @@ const StartTestIntentHandler = {
         let speakOutput;
         
         if(sessionAttributes.test){
+            sessionAttributes.resumeTest = true;
+            sessionAttributes.difficulty = DIFFICULTY;
             speakOutput = 'I have a previous test saved that has not been completed. Would you like to resume this test?';
         } else {
             // no test saved
@@ -63,44 +65,23 @@ const ResumeTestIntentHandler = {
     canHandle(handlerInput) {
         console.log('RESUME TEST INTENT CAN HANDLE');
 
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const request = handlerInput.requestEnvelope.request;
         return request.type === 'IntentRequest'
-            && request.intent.name === 'TestIntent';
+            && request.intent.name === 'AMAZON.YesIntent'
+            && sessionAttributes.resumeTest;
     },
     handle(handlerInput) {
         console.log('RESUME TEST INTENT HANDLER');
-        const DIFFICULTY = Alexa.getSlot(handlerInput.requestEnvelope, 'difficulty').value;
+        
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        console.log(JSON.stringify(sessionAttributes));
         
-        console.log(JSON.stringify(sessionAttributes));
-        // test just started
-        sessionAttributes.test = {
-            difficulty: DIFFICULTY,
-            questionNum: 0,
-            attempts: 0,
-            isRunning: true,
-            numCorrect: 0,
-            hintMessageGiven: false
-        };
-
-        console.log(JSON.stringify(sessionAttributes));
-
+        // resume test
         const test = sessionAttributes.test;
-        console.log(DIFFICULTY);
-        if(DIFFICULTY === 'normal'){
-
-            test.problems = genNormalProblems();
         
-        } else if(DIFFICULTY === 'hard'){
-            
-            test.problems = genHardProblems();
-
-        } else{
-            console.log('invalid value in DIFFICULTY');
-            return 0;
-        }
-        
-        const speakOutput = test.problems[0].question;
+        const speakOutput = test.problems[test.questionNum].question;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
