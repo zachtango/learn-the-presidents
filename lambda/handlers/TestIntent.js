@@ -2,8 +2,6 @@ const Alexa = require('ask-sdk-core');
 
 const { genNormalProblems, genHardProblems } = require('../functions/presidentFunctions');
 
-
-
 // Session attributes to persist throughout lifespan of current skill session
 const StartTestIntentHandler = {
     canHandle(handlerInput) {
@@ -19,34 +17,40 @@ const StartTestIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         
         console.log(JSON.stringify(sessionAttributes));
-        // test just started
-        sessionAttributes.test = {
-            difficulty: DIFFICULTY,
-            questionNum: 0,
-            attempts: 0,
-            isRunning: true,
-            numCorrect: 0,
-            hintMessageGiven: false
-        };
-
-        console.log(JSON.stringify(sessionAttributes));
-
-        const test = sessionAttributes.test;
-        console.log(DIFFICULTY);
-        if(DIFFICULTY === 'normal'){
-
-            test.problems = genNormalProblems();
+        let speakOutput;
         
-        } else if(DIFFICULTY === 'hard'){
+        if(sessionAttributes.test){
+            speakOutput = 'I have a previous test saved that has not been completed. Would you like to resume this test?';
+        } else {
+            // no test saved
+            sessionAttributes.test = {
+                difficulty: DIFFICULTY,
+                questionNum: 0,
+                attempts: 0,
+                isRunning: true,
+                numCorrect: 0,
+                hintMessageGiven: false
+            };
+
+            console.log(JSON.stringify(sessionAttributes));
+
+            const test = sessionAttributes.test;
+            console.log(DIFFICULTY);
+            if(DIFFICULTY === 'normal'){
+
+                test.problems = genNormalProblems();
             
-            test.problems = genHardProblems();
+            } else if(DIFFICULTY === 'hard'){
+                
+                test.problems = genHardProblems();
 
-        } else{
-            console.log('invalid value in DIFFICULTY');
-            return 0;
-        }
-        
-        const speakOutput = test.problems[0].question;
+            } else{
+                console.log('invalid value in DIFFICULTY');
+                return 0;
+            }
+            
+            speakOutput = test.problems[0].question;
+        }  
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
