@@ -18,5 +18,9 @@
   "homepage": "https://github.com/zachtango/learn-the-presidents#readme",
   "devDependencies": {
     "eslint": "^7.32.0"
+  },
+  "dependencies": {
+    "ask-sdk-core": "^2.11.0",
+    "ask-sdk-s3-persistence-adapter": "^2.11.0"
   }
 }

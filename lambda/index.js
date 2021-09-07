@@ -4,6 +4,11 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
+const {S3PersistenceAdapter} = require('ask-sdk-s3-persistence-adapter');
+
+const persistenceAdapter = new S3PersistenceAdapter({
+    bucketName: process.env.S3_PERSISTENCE_BUCKET
+});
 
 const TestIntentHandler = require('./handlers/TestIntent');
 const PresIntentHandler = require('./handlers/PresIntent');
@@ -129,6 +134,36 @@ const ErrorHandler = {
     }
 };
 
+// get persistent attributes
+const LoadAttributesRequestInterceptor = {
+    async process(handlerInput){
+        const {attributesManager, requestEnvelope} = handlerInput;
+        if(Alexa.isNewSession(requestEnvelope)){
+            const persistentAttributes = await attributesManager.getPersistentAttributes || {};
+            console.log('Loading from persistent storage: ' + JSON.stringify(persistentAttributes));
+            // copy persistent attributes to session attributes
+            attributesManager.setSessionAttributes(persistentAttributes);
+        }
+    }
+}
+
+const SaveAttributesResponseInterceptor = {
+    async process(handlerInput, response) {
+        if (!response) return; // avoid intercepting calls that have no outgoing response due to errors
+        const {attributesManager, requestEnvelope} = handlerInput;
+        const sessionAttributes = attributesManager.getSessionAttributes();
+        const shouldEndSession = (typeof response.shouldEndSession === "undefined" ? true : response.shouldEndSession); //is this a session end?
+        if (shouldEndSession || Alexa.getRequestType(requestEnvelope) === 'SessionEndedRequest') { // skill was stopped or timed out
+            // we increment a persistent session counter here
+            sessionAttributes['sessionCounter'] = sessionAttributes['sessionCounter'] ? sessionAttributes['sessionCounter'] + 1 : 1;
+            // we make ALL session attributes persistent
+            console.log('Saving to persistent storage:' + JSON.stringify(sessionAttributes));
+            attributesManager.setPersistentAttributes(sessionAttributes);
+            await attributesManager.savePersistentAttributes();
+        }
+    }
+};
+
 /**
  * This handler acts as the entry point for your skill, routing all request and response
  * payloads to the handlers above. Make sure any new handlers or interceptors you've
@@ -151,5 +186,12 @@ exports.handler = Alexa.SkillBuilders.custom()
         IntentReflectorHandler)
     .addErrorHandlers(
         ErrorHandler)
-    .withCustomUserAgent('sample/hello-world/v1.2')
+    .addRequestInterceptors(
+        LoadAttributesRequestInterceptor
+    )
+    .addResponseInterceptors(
+        SaveAttributesResponseInterceptor
+    )
+    //.withCustomUserAgent('sample/hello-world/v1.2')
+    .withPersistenceAdapter(persistenceAdapter)
     .lambda();

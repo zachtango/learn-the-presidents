@@ -51,7 +51,7 @@ const AnswerIntentHandler = {
 
         if(test.questionNum === NUM_PROBLEMS){
             speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}`;
-            test.isRunning = false;
+            sessionAttributes.test = null;
         }
 
         return handlerInput.responseBuilder
