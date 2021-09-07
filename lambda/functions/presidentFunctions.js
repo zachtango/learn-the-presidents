@@ -130,10 +130,13 @@ function genHardProblems(){
     })
   );
 
+  const factId = Math.floor(Math.random() * 3);
+
   return Array.from(order, (elem) => {
       return { // FIXME: make question be asked in different ways
-          question: `Who ${PRESIDENTS[elem].facts[Math.floor(Math.random() * 3)]}?`, // random number between 0 and 2 (3 facts total in array)
-          answer: elem
+          question: `Who ${PRESIDENTS[elem].facts[factId]}?`, // random number between 0 and 2 (3 facts total in array)
+          answer: elem,
+          factId: factId
       };
   });
 }
@@ -142,10 +145,15 @@ function genHardProblems(){
  *  
  * @returns a string that is the hint dialogue for a given president
  */
-function genHint(index){
+function genHint(index, factId = -1){
+  let hintId = Math.floor(Math.random() * 3);
+  
+  while(hintId === factId){
+    hintId = Math.floor(Math.random() * 3);
+  }
 
-  const fact = PRESIDENTS[index].facts[Math.floor(Math.random() * 3)];
-
+  const fact = PRESIDENTS[index].facts[hintId];
+  
   const speakOutput = `This president ${fact}`; // FIXME: SWITCH UP SAYINGS
 
   return speakOutput;

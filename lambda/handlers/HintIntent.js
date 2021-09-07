@@ -13,9 +13,9 @@ const HintIntentHandler = {
   },
   handle(handlerInput) {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    const test = sessionAttributes.test;
+    const problem = sessionAttributes.test.problems[sessionAttributes.test.questionNum];
 
-    const speakOutput = genHint(test.problems[test.questionNum].answer);
+    const speakOutput = problem.factId ? genHint(problem.answer, problem.factId) : genHint(problem.answer);
 
     return handlerInput.responseBuilder
         .speak(speakOutput)
