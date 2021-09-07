@@ -6,6 +6,7 @@ const AnswerIntentHandler = {
 
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const request = handlerInput.requestEnvelope.request;
+        console.log(JSON.stringify(sessionAttributes));
         return request.type === 'IntentRequest'
             && request.intent.name === 'AnswerIntent'
             && sessionAttributes.test
