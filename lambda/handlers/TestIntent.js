@@ -29,6 +29,8 @@ const TestIntentHandler = {
             hintMessageGiven: false
         };
 
+        console.log(JSON.stringify(sessionAttributes));
+
         const test = sessionAttributes.test;
         console.log(DIFFICULTY);
         if(DIFFICULTY === 'normal'){
