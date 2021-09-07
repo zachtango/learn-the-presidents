@@ -159,6 +159,41 @@ function genHint(index, factId = -1){
   return speakOutput;
 }
 
+/** Generates a test and saves it to sessionAttributes
+ * @param {Object} sessionAttributes
+ * @returns a string that asks a question abt a president
+ */
+function genTest(sessionAttributes, DIFFICULTY){
+  // no test saved
+  sessionAttributes.test = {
+    difficulty: DIFFICULTY,
+    questionNum: 0,
+    attempts: 0,
+    isRunning: true,
+    numCorrect: 0,
+    hintMessageGiven: false
+  };
+
+  console.log(JSON.stringify(sessionAttributes));
+
+  const test = sessionAttributes.test;
+  console.log(DIFFICULTY);
+  if(DIFFICULTY === 'normal'){
+
+      test.problems = genNormalProblems();
+
+  } else if(DIFFICULTY === 'hard'){
+      
+      test.problems = genHardProblems();
+
+  } else{
+      console.log('invalid value in DIFFICULTY');
+      return 0;
+  }
+
+  return test.problems[0].question;
+}
+
 module.exports = { 
   getRandomPresident, 
   getRandomPresidentText, 
@@ -166,5 +201,6 @@ module.exports = {
   getPresDescription, 
   genNormalProblems, 
   genHardProblems, 
-  genHint 
+  genHint,
+  genTest
 };
