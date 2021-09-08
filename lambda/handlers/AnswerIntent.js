@@ -40,7 +40,7 @@ const AnswerIntentHandler = {
             if(test.attempts >= 2){
                 test.questionNum++;
                 test.attempts = 0;
-                speakOutput = `Wrong. The correct answer is ${getPresName(presidentId)}. `;
+                speakOutput = `Wrong. The correct answer is ${getPresName(test.problems[test.questionNum].answer)}. `;
                 if(test.questionNum !== NUM_PROBLEMS){
                     speakOutput += `${test.problems[test.questionNum].question}`;
                 }
