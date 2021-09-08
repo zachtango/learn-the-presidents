@@ -119,6 +119,19 @@
                     "name": "presidents",
                     "values": [
                         {
+                            "id": "-1",
+                            "name": {
+                                "value": "unknown",
+                                "synonyms": [
+                                    "don't know",
+                                    "I'm not sure",
+                                    "not sure",
+                                    "skip",
+                                    "I don't know"
+                                ]
+                            }
+                        },
+                        {
                             "id": "0",
                             "name": {
                                 "value": "George Washington",
