@@ -96,7 +96,7 @@ const AnswerIntentHandler = {
             
             return handlerInput.responseBuilder
                 .speak(speakOutput)
-                .shouldEndSession(true)
+                .withShouldEndSession(true)
                 .getResponse();
         }
 
