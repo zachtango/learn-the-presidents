@@ -42,9 +42,10 @@ const AnswerIntentHandler = {
             test.attempts++;
 
             if(test.attempts >= 2){
-                test.questionNum++;
-                test.attempts = 0;
                 speakOutput = `Wrong. The correct answer is ${getPresName(test.problems[test.questionNum].answer)}. `;
+                
+                test.attempts = 0;
+                test.questionNum++;
                 if(test.questionNum !== NUM_PROBLEMS){
                     speakOutput += `${test.problems[test.questionNum].question}`;
                 }
