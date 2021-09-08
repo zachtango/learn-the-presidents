@@ -28,7 +28,7 @@ const AnswerIntentHandler = {
         const answerIsCorrect = parseInt(presidentId) === test.problems[test.questionNum].answer;
 
         let speakOutput = '';
-        if(answerIsCorrect){ // check answer
+        if(answerIsCorrect){ // Correct answer
             test.questionNum++;
             test.numCorrect++;
             test.attempts = 0;
@@ -37,12 +37,20 @@ const AnswerIntentHandler = {
                 speakOutput = test.problems[test.questionNum].question;
             }
 
-        } else{
+        } else if(presidentId === -1){ // User wants to skip
+            speakOutput = `Ok. The correct answer was ${getPresName(test.problems[test.questionNum].answer)}. `
+            
+            test.attempts = 0;
+            test.questionNum++;
+            if(test.questionNum !== NUM_PROBLEMS){
+                speakOutput += `${test.problems[test.questionNum].question}`
+            }
+        } else{ // Incorrect Answer
             
             test.attempts++;
 
             if(test.attempts >= 2){
-                speakOutput = `Wrong. The correct answer is ${getPresName(test.problems[test.questionNum].answer)}. `;
+                speakOutput = `Wrong. The correct answer was ${getPresName(test.problems[test.questionNum].answer)}. `;
                 
                 test.attempts = 0;
                 test.questionNum++;
