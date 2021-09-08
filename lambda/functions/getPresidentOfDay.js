@@ -17,7 +17,7 @@ function getPresidentOfDayResponse(timeZone) {
  */
 function getPresidentOfDay(timeZone) {
   // the current time adjusted to the user's time zone
-  const currentDateTime = new Date(new Date().toLocaleString("en-US", { timeZone: timeZone }));
+  let currentDateTime = new Date(new Date().toLocaleString("en-US", { timeZone: timeZone }));
   // the arbitrarily-defined start date adjusted to the user's Alexa's time zone
   const startDate = new Date(new Date("1/1/2020").toLocaleDateString("en-US", { timeZone: timeZone }));
   const daysSince = daysInBetween(startDate, currentDateTime);
@@ -42,7 +42,6 @@ function daysInBetween(start, end) {
 // testing
 if (require.main === module) {
   // console.log(getPresidentOfDay("America/New_York"));
-  console.log(getPresidentOfDayResponse("America/Chicago"));
 }
 
 module.exports = { getPresidentOfDayResponse };
