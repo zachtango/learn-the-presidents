@@ -156,6 +156,9 @@ const SaveAttributesResponseInterceptor = {
         if (shouldEndSession || Alexa.getRequestType(requestEnvelope) === 'SessionEndedRequest') { // skill was stopped or timed out
             // we increment a persistent session counter here
             sessionAttributes['sessionCounter'] = sessionAttributes['sessionCounter'] ? sessionAttributes['sessionCounter'] + 1 : 1;
+            
+            sessionAttributes.test.isRunning = false;
+
             // we make ALL session attributes persistent
             console.log('Saving to persistent storage:' + JSON.stringify(sessionAttributes));
             attributesManager.setPersistentAttributes(sessionAttributes);
