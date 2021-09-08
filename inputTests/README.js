@@ -21,6 +21,7 @@
         "donald trump",
         "donald trump",
         "donald trump",
+        "alexa stop",
         ".quit" // IF u want ask dialog to quit automatically (it will stay open if .quit isn't present)
     ]
 }
