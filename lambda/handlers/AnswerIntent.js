@@ -26,7 +26,7 @@ const AnswerIntentHandler = {
         const NUM_PROBLEMS = 5;
 
         const answerIsCorrect = parseInt(presidentId) === test.problems[test.questionNum].answer;
-
+        console.log('ANSWER ID: ', presidentId);
         let speakOutput = '';
         if(answerIsCorrect){ // Correct answer
             test.questionNum++;
