@@ -7,5 +7,4 @@ node_modules
 package-lock.json
 .DS_Store
 president_slots.json
-test.json
 lambda/handlers/OldIntentTest.js
