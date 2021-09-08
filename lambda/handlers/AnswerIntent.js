@@ -20,12 +20,12 @@ const AnswerIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         const presidentSlot = Alexa.getSlot(handlerInput.requestEnvelope, 'president');
-        const presidentId = presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id;
+        const presidentId = parseInt(presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id);
 
         const test = sessionAttributes.test;
         const NUM_PROBLEMS = 5;
 
-        const answerIsCorrect = parseInt(presidentId) === test.problems[test.questionNum].answer;
+        const answerIsCorrect = presidentId === test.problems[test.questionNum].answer;
         console.log('ANSWER ID: ', presidentId);
         let speakOutput = '';
         if(answerIsCorrect){ // Correct answer
