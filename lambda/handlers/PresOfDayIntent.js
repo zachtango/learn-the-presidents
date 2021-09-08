@@ -6,7 +6,7 @@ const PresOfDayIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PresOfDayIntent';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         // Getting user's time zone
         const serviceClientFactory = handlerInput.serviceClientFactory;
         const deviceId = handlerInput.requestEnvelope.context.System.device.deviceId;
