@@ -196,4 +196,5 @@ exports.handler = Alexa.SkillBuilders.custom()
     )
     //.withCustomUserAgent('sample/hello-world/v1.2')
     .withPersistenceAdapter(persistenceAdapter)
+    .withApiClient(new Alexa.DefaultApiClient())
     .lambda();
