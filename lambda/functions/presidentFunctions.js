@@ -43,7 +43,7 @@ function getPresDescription(president, descType) {
       break;
     }
     case DESC_TYPES.POTD: {
-      responseText += `The president of the day is ${presidentFirstName}`;
+      responseText += `The president of the day is ${presidentFirstName}. He`;
       break;
     }
     default: {
