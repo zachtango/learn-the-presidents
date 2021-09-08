@@ -27,12 +27,16 @@ const AnswerIntentHandler = {
 
         const answerIsCorrect = parseInt(presidentId) === test.problems[test.questionNum].answer;
 
-        let speakOutput;
+        let speakOutput = '';
         if(answerIsCorrect){ // check answer
             test.questionNum++;
             test.numCorrect++;
             test.attempts = 0;
-            speakOutput = test.problems[test.questionNum].question;
+            
+            if(test.questionNum !== NUM_PROBLEMS){
+                speakOutput = test.problems[test.questionNum].question;
+            }
+
         } else{
             
             test.attempts++;
