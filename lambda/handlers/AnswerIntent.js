@@ -40,7 +40,10 @@ const AnswerIntentHandler = {
             if(test.attempts >= 2){
                 test.questionNum++;
                 test.attempts = 0;
-                speakOutput = `Wrong. The correct answer is ${getPresName(presidentId)}. ${test.problems[test.questionNum].question}`;
+                speakOutput = `Wrong. The correct answer is ${getPresName(presidentId)}. `;
+                if(test.questionNum !== NUM_PROBLEMS){
+                    speakOutput += `${test.problems[test.questionNum].question}`;
+                }
                 
             } else{
                 if(!test.hintMessageGiven){
@@ -53,7 +56,7 @@ const AnswerIntentHandler = {
         }
 
         if(test.questionNum === NUM_PROBLEMS){
-            speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}. `;
+            speakOutput += `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}. `;
 
             if(test.difficulty === 'normal'){
                 if(sessionAttributes.normalHS){
