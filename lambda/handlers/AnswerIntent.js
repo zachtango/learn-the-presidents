@@ -27,20 +27,25 @@ const AnswerIntentHandler = {
 
         const answerIsCorrect = parseInt(presidentId) === test.problems[test.questionNum].answer;
 
-        let speakOutput;
+        let speakOutput = '';
         if(answerIsCorrect){ // check answer
             test.questionNum++;
             test.numCorrect++;
             test.attempts = 0;
-            speakOutput = test.problems[test.questionNum].question;
+            
+            if(test.questionNum !== NUM_PROBLEMS){
+                speakOutput = test.problems[test.questionNum].question;
+            }
+
         } else{
             
             test.attempts++;
 
             if(test.attempts >= 2){
-                test.questionNum++;
-                test.attempts = 0;
                 speakOutput = `Wrong. The correct answer is ${getPresName(test.problems[test.questionNum].answer)}. `;
+                
+                test.attempts = 0;
+                test.questionNum++;
                 if(test.questionNum !== NUM_PROBLEMS){
                     speakOutput += `${test.problems[test.questionNum].question}`;
                 }
@@ -59,11 +64,14 @@ const AnswerIntentHandler = {
             speakOutput += `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}. `;
 
             if(test.difficulty === 'normal'){
+
                 if(sessionAttributes.normalHS){
                     if(test.numCorrect > sessionAttributes.normalHS){
                         sessionAttributes.normalHS = test.numCorrect;
                         speakOutput += `Wow! You set a new personal record of ${test.numCorrect} correct answers for the normal test!`;
                     }
+                } else{
+                    sessionAttributes.normalHS = test.numCorrect;
                 }
             } else{
                 if(sessionAttributes.hardHS){
@@ -71,6 +79,8 @@ const AnswerIntentHandler = {
                         sessionAttributes.hardHS = test.numCorrect;
                         speakOutput += `Wow! You set a new personal record of ${test.numCorrect} correct answer for the hard test!`;
                     }
+                } else{
+                    sessionAttributes.hardHS = test.numCorrect;
                 }
             }
 

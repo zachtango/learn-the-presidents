@@ -1,0 +1,16 @@
+{
+    "skillId": "amzn1.ask.skill.24dd30e9-1314-44f7-9084-34b188c1ca91", 
+    "locale": "en-US",
+    "type": "text",
+    "userInput": [
+        "ask learn the presidents I want to take the normal test",
+        "george washington",
+        "john adams",
+        "thomas jefferson",
+        "james madison",
+        "obama",
+        "obama",
+        "alexa stop",
+        ".quit"
+    ]
+}
