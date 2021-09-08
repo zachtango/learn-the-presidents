@@ -93,6 +93,11 @@ const AnswerIntentHandler = {
             }
 
             sessionAttributes.test = null;
+            
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .shouldEndSession(true)
+                .getResponse();
         }
 
         return handlerInput.responseBuilder
