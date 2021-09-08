@@ -63,6 +63,10 @@ function getPresDescriptionFromId(id) {
   return getPresDescription(president);
 }
 
+function getPresName(id){
+  return PRESIDENTS[id].names[0];
+}
+
 function getPresId(president) {
   for (let i = 0; i < PRESIDENTS.length; ++i) {
     testPres = PRESIDENTS[i];
@@ -196,7 +200,8 @@ function genTest(sessionAttributes, DIFFICULTY){
 
 module.exports = { 
   getRandomPresident, 
-  getRandomPresidentText, 
+  getRandomPresidentText,
+  getPresName,
   getPresDescriptionFromId, 
   getPresDescription, 
   genNormalProblems, 

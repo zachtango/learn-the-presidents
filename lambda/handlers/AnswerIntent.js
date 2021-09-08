@@ -1,5 +1,7 @@
 const Alexa = require('ask-sdk-core');
 
+const {getPresName} = require('../functions/presidentFunctions');
+
 const AnswerIntentHandler = {
     canHandle(handlerInput) {
         console.log('ANSWER INTENT CAN HANDLE');
@@ -38,7 +40,7 @@ const AnswerIntentHandler = {
             if(test.attempts >= 2){
                 test.questionNum++;
                 test.attempts = 0;
-                speakOutput = `Wrong. Lets move on. ${test.problems[test.questionNum].question}`;
+                speakOutput = `Wrong. The correct answer is ${getPresName(presidentId)}. ${test.problems[test.questionNum].question}`;
                 
             } else{
                 if(!test.hintMessageGiven){
@@ -51,7 +53,24 @@ const AnswerIntentHandler = {
         }
 
         if(test.questionNum === NUM_PROBLEMS){
-            speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}`;
+            speakOutput = `The test is finished. Great job. You got ${test.numCorrect} questions correct out of ${NUM_PROBLEMS}. `;
+
+            if(test.difficulty === 'normal'){
+                if(sessionAttributes.normalHS){
+                    if(test.numCorrect > sessionAttributes.normalHS){
+                        sessionAttributes.normalHS = test.numCorrect;
+                        speakOutput += `Wow! You set a new personal record of ${test.numCorrect} correct answers for the normal test!`;
+                    }
+                }
+            } else{
+                if(sessionAttributes.hardHS){
+                    if(test.numCorrect > sessionAttributes.hardHS){
+                        sessionAttributes.hardHS = test.numCorrect;
+                        speakOutput += `Wow! You set a new personal record of ${test.numCorrect} correct answer for the hard test!`;
+                    }
+                }
+            }
+
             sessionAttributes.test = null;
         }
 
