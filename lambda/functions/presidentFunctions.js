@@ -80,11 +80,11 @@ function getPresPosition(president) {
   const id = getPresId(president);
   const humanId = String(id + 1);
   const lastChar = humanId[humanId.length - 1]
-  if (lastChar == '1') {
+  if (lastChar == '1' && humanId != 11) {
     return `${humanId}st`
-  } else if (lastChar == '2') {
+  } else if (lastChar == '2' && humanId != 12) {
     return `${humanId}nd`
-  } else if (lastChar == '3') {
+  } else if (lastChar == '3' && humanId != 13) {
     return `${humanId}rd`
   } else {
     return `${humanId}th`
