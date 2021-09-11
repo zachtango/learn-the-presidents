@@ -4,7 +4,9 @@
   "description": "8/28/2021 6:50 PM Welcome to our Learn the Presidents Alexa Skill!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-interaction-model": "ask smapi get-interaction-model --skill-id amzn1.ask.skill.24dd30e9-1314-44f7-9084-34b188c1ca91 --stage 'development' --locale en-US > skill-package/interactionModels/custom/en-US.json && echo 'Updated Interaction Model!'",
+    "update-skill": "git pull && npm run update-interaction-model"
   },
   "repository": {
     "type": "git",
