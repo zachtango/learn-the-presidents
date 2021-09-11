@@ -1,6 +1,7 @@
 const Alexa = require('ask-sdk-core');
 
 const {getPresName} = require('../functions/presidentFunctions');
+const {getCasualResponse, getCorrectionResponse, getWrongResponse, getTryAgainResponse, getRightResponse} = require('../functions/responses');
 
 const AnswerIntentHandler = {
     canHandle(handlerInput) {
@@ -34,11 +35,11 @@ const AnswerIntentHandler = {
             test.attempts = 0;
             
             if(test.questionNum !== NUM_PROBLEMS){
-                speakOutput = test.problems[test.questionNum].question;
+                speakOutput = `${getRightResponse()}. ${test.problems[test.questionNum].question}`;
             }
 
         } else if(presidentId === -1){ // User wants to skip
-            speakOutput = `Ok. The correct answer was ${getPresName(test.problems[test.questionNum].answer)}. `
+            speakOutput = `${getCasualResponse()}. ${getCorrectionResponse()} ${getPresName(test.problems[test.questionNum].answer)}. `
             
             test.attempts = 0;
             test.questionNum++;
@@ -50,7 +51,7 @@ const AnswerIntentHandler = {
             test.attempts++;
 
             if(test.attempts >= 2){
-                speakOutput = `Wrong. The correct answer was ${getPresName(test.problems[test.questionNum].answer)}. `;
+                speakOutput = `${getWrongResponse()}. ${getCorrectionResponse()} ${getPresName(test.problems[test.questionNum].answer)}. `;
                 
                 test.attempts = 0;
                 test.questionNum++;
@@ -60,10 +61,10 @@ const AnswerIntentHandler = {
                 
             } else{
                 if(!test.hintMessageGiven){
-                    speakOutput = 'Wrong! If you\'d like a hint. Just say, give me a hint.';
+                    speakOutput = `${getWrongResponse()}. Just let me know if you need a hint.`;
                     test.hintMessageGiven = true;
                 } else{
-                    speakOutput = 'Wrong! Try again';
+                    speakOutput = `${getWrongResponse()}. ${getTryAgainResponse()}`;
                 }
             }
         }
