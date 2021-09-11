@@ -143,6 +143,8 @@ const LoadAttributesRequestInterceptor = {
             console.log('Loading from persistent storage: ' + JSON.stringify(persistentAttributes));
             // copy persistent attributes to session attributes
             attributesManager.setSessionAttributes(persistentAttributes);
+            const sessionAttributes = attributesManager.getSessionAttributes();
+            sessionAttributes.test.isRunning = false;
         }
     }
 }
@@ -152,9 +154,6 @@ const SaveAttributesResponseInterceptor = {
         //if (!response) return; // avoid intercepting calls that have no outgoing response due to errors
         const {attributesManager} = handlerInput;
         const sessionAttributes = attributesManager.getSessionAttributes();
-
-        if(sessionAttributes.test)
-            sessionAttributes.test.isRunning = false;
 
         // we make ALL session attributes persistent
         console.log('Saving to persistent storage:' + JSON.stringify(sessionAttributes));
