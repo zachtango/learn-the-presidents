@@ -51,12 +51,12 @@ const ResumeTestIntentHandler = {
         sessionAttributes.resumeTest = null;
         sessionAttributes.difficulty = null;
 
-        console.log(JSON.stringify(sessionAttributes));
+       
         
         // resume test
         const test = sessionAttributes.test;
         test.isRunning = true;
-
+        console.log(JSON.stringify(sessionAttributes));
         const speakOutput = test.problems[test.questionNum].question;
 
         return handlerInput.responseBuilder
