@@ -55,7 +55,8 @@ const ResumeTestIntentHandler = {
         
         // resume test
         const test = sessionAttributes.test;
-        
+        test.isRunning = true;
+
         const speakOutput = test.problems[test.questionNum].question;
 
         return handlerInput.responseBuilder
@@ -82,6 +83,8 @@ const DontResumeTestIntentHandler = {
         sessionAttributes.difficulty = null;
 
         const speakOutput = genTest(sessionAttributes, DIFFICULTY);
+
+        console.log(sessionAttributes.test);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
