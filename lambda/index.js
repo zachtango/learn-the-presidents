@@ -149,7 +149,7 @@ const LoadAttributesRequestInterceptor = {
 
 const SaveAttributesResponseInterceptor = {
     async process(handlerInput, response) {
-        if (!response) return; // avoid intercepting calls that have no outgoing response due to errors
+        //if (!response) return; // avoid intercepting calls that have no outgoing response due to errors
         const {attributesManager, requestEnvelope} = handlerInput;
         const sessionAttributes = attributesManager.getSessionAttributes();
         const shouldEndSession = (typeof response.shouldEndSession === "undefined" ? true : response.shouldEndSession); //is this a session end?
