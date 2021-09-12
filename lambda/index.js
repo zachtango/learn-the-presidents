@@ -10,7 +10,7 @@ const persistenceAdapter = new S3PersistenceAdapter({
     bucketName: process.env.S3_PERSISTENCE_BUCKET
 });
 
-const { StartTestIntentHandler, ResumeTestIntentHandler, DontResumeTestIntentHandler } = require('./handlers/TestIntent');
+const { StartTestIntentHandler, ResumeTestIntentHandler, ResumeStartTestIntentHandler, DontResumeStartTestIntentHandler, HighscoreIntentHandler } = require('./handlers/TestIntent');
 const PresIntentHandler = require('./handlers/PresIntent');
 const RandomPresIntentHandler = require('./handlers/RandomPresIntent');
 const PresOfDayIntentHandler = require('./handlers/PresOfDayIntent');
@@ -23,7 +23,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Test Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = 'Welcome! I have a lot of interesting facts about the presidents to share, or I can test your knowledge on the presidents. Just let me know what you\'d like to do.';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -38,7 +38,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'I can share my knowledge about any president. Also, I can give challenging tests on one\'s knowledge about the presidents. Which one interests you?';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -144,7 +144,9 @@ const LoadAttributesRequestInterceptor = {
             // copy persistent attributes to session attributes
             attributesManager.setSessionAttributes(persistentAttributes);
             const sessionAttributes = attributesManager.getSessionAttributes();
-            sessionAttributes.test.isRunning = false;
+            
+            if(sessionAttributes.test)
+                sessionAttributes.test.isRunning = false;
         }
     }
 }
@@ -172,10 +174,12 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         StartTestIntentHandler,
-        ResumeTestIntentHandler,
-        DontResumeTestIntentHandler,
+        ResumeStartTestIntentHandler,
+        DontResumeStartTestIntentHandler,
         AnswerIntentHandler,
         HintIntentHandler,
+        ResumeTestIntentHandler,
+        HighscoreIntentHandler,
         RandomPresIntentHandler,
         PresIntentHandler,
         PresOfDayIntentHandler,
