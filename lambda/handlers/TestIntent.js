@@ -146,7 +146,7 @@ const HighscoreIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            .withShouldEndSession(true)
             .getResponse();
     }
 }
