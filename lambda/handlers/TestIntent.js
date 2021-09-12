@@ -1,6 +1,8 @@
 const Alexa = require('ask-sdk-core');
 
 const { genTest } = require('../functions/presidentFunctions');
+const {getCasualResponse} = require('../functions/responses');
+
 
 // Session attributes to persist throughout lifespan of current skill session
 const StartTestIntentHandler = {
@@ -35,6 +37,32 @@ const StartTestIntentHandler = {
 };
 
 const ResumeTestIntentHandler = {
+    canHandle(handlerInput){
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest'
+            && request.intent.name === 'ResumeTestIntent';
+    },
+    handle(handlerInput){
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        
+        let speakOutput;
+        if(sessionAttributes.test){
+            const test = sessionAttributes.test;
+            test.isRunning = true;
+
+            speakOutput = test.problems[test.questionNum].question;
+        } else{
+            speakOutput = 'Hmmm. I dont have a previous test saved. Try to start a new one.';
+        }
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+    }
+}
+
+const ResumeStartTestIntentHandler = {
     canHandle(handlerInput) {
         console.log('RESUME TEST INTENT CAN HANDLE');
 
@@ -66,7 +94,7 @@ const ResumeTestIntentHandler = {
     }
 };
 
-const DontResumeTestIntentHandler = {
+const DontResumeStartTestIntentHandler = {
     canHandle(handlerInput){
         console.log('DONT RESUME TEST INTENT CAN HANDLE');
         
@@ -93,4 +121,34 @@ const DontResumeTestIntentHandler = {
     }
 };
 
-module.exports = {StartTestIntentHandler, ResumeTestIntentHandler, DontResumeTestIntentHandler};
+const HighscoreIntentHandler = {
+    canHandle(handlerInput){
+        
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest'
+            && request.intent.name === 'HighscoreIntent';
+    },
+    handle(handlerInput){
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        let speakOutput = `${getCasualResponse()}. `;
+        if(sessionAttributes.normalHS || sessionAttributes.hardHS){
+            if(sessionAttributes.normalHS){
+                speakOutput += `Your highest score on the normal test is ${sessionAttributes.normalHS}. `;
+            }
+
+            if(sessionAttributes.hardHS){
+                speakOutput += `Your highest score on the hard test is ${sessionAttributes.hardHS}`;
+            }
+        } else{
+            speakOutput = 'It seems that I dont have a highest test score saved. Try and set a new one by taking the test.';
+        }
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+    }
+}
+
+module.exports = {StartTestIntentHandler, ResumeTestIntentHandler, ResumeStartTestIntentHandler, DontResumeStartTestIntentHandler, HighscoreIntentHandler};
