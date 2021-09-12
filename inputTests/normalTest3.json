@@ -4,14 +4,8 @@
     "type": "text",
     "userInput": [
         "ask learn the presidents I want to take the normal test",
+        "yes",
         "george washington",
-        "john adams",
-        "thomas jefferson",
-        "obama",
-        "obama",
-        "obama",
-        "obama",
-        "alexa stop",
         ".quit"
     ]
 }
