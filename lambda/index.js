@@ -144,7 +144,9 @@ const LoadAttributesRequestInterceptor = {
             // copy persistent attributes to session attributes
             attributesManager.setSessionAttributes(persistentAttributes);
             const sessionAttributes = attributesManager.getSessionAttributes();
-            sessionAttributes.test.isRunning = false;
+            
+            if(sessionAttributes.test)
+                sessionAttributes.test.isRunning = false;
         }
     }
 }
