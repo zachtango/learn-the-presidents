@@ -117,7 +117,7 @@ function genNormalProblems(){
 
     return {
         question: `Who was the ${presidentNumber} president?`, // FIXME: switch up sayings
-        answer: index
+        answer: (index === 23) ? 21 : index
     };
   });
 }
@@ -139,7 +139,7 @@ function genHardProblems(){
   return Array.from(order, (elem) => {
       return { // FIXME: make question be asked in different ways
           question: `Who ${PRESIDENTS[elem].facts[factId]}?`, // random number between 0 and 2 (3 facts total in array)
-          answer: elem,
+          answer: (elem === 23) ? 21 : elem,
           factId: factId
       };
   });
