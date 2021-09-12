@@ -29,6 +29,7 @@ const AnswerIntentHandler = {
         const answerIsCorrect = presidentId === test.problems[test.questionNum].answer;
         console.log('ANSWER ID: ', presidentId);
         let speakOutput = '';
+        let repromptOutput = '';
         if(answerIsCorrect){ // Correct answer
             test.questionNum++;
             test.numCorrect++;
@@ -36,15 +37,17 @@ const AnswerIntentHandler = {
             
             if(test.questionNum !== NUM_PROBLEMS){
                 speakOutput = `${getRightResponse()}. ${test.problems[test.questionNum].question}`;
+                repromptOutput = `${test.problems[test.questionNum].question}`;
             }
 
         } else if(presidentId === -1){ // User wants to skip
             speakOutput = `${getCasualResponse()}. ${getCorrectionResponse()} ${getPresName(test.problems[test.questionNum].answer)}. `
-            
+
             test.attempts = 0;
             test.questionNum++;
             if(test.questionNum !== NUM_PROBLEMS){
-                speakOutput += `${test.problems[test.questionNum].question}`
+                speakOutput += `${test.problems[test.questionNum].question}`;
+                repromptOutput = `${test.problems[test.questionNum].question}`
             }
         } else{ // Incorrect Answer
             
@@ -57,6 +60,7 @@ const AnswerIntentHandler = {
                 test.questionNum++;
                 if(test.questionNum !== NUM_PROBLEMS){
                     speakOutput += `${test.problems[test.questionNum].question}`;
+                    repromptOutput = `${test.problems[test.questionNum].question}`;
                 }
                 
             } else{
@@ -103,7 +107,7 @@ const AnswerIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            .reprompt(repromptOutput)
             .getResponse();
     }
 };
