@@ -24,7 +24,7 @@ const AnswerIntentHandler = {
         const presidentId = parseInt(presidentSlot.resolutions.resolutionsPerAuthority[0].values[0].value.id);
 
         const test = sessionAttributes.test;
-        const NUM_PROBLEMS = 5;
+        const NUM_PROBLEMS = 46;
 
         const answerIsCorrect = presidentId === test.problems[test.questionNum].answer;
         console.log('ANSWER ID: ', presidentId);
