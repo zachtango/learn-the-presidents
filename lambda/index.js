@@ -23,7 +23,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Test Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = 'Welcome! I have a lot of interesting facts about the presidents to share, or I can test your knowledge on the presidents. Just let me know what you\'d like to do.';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -38,7 +38,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'I can share my knowledge about any president. Also, I can give challenging tests on one\'s knowledge about the presidents. Which one interests you?';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
