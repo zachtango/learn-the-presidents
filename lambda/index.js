@@ -227,7 +227,6 @@ const SaveAttributesResponseInterceptor = {
  * defined are included below. The order matters - they're processed top to bottom
  * */
 exports.handler = Alexa.SkillBuilders.custom()
-<<<<<<< HEAD
     .addRequestHandlers(
         LaunchRequestHandler,
         IntentHandler,
@@ -249,31 +248,3 @@ exports.handler = Alexa.SkillBuilders.custom()
     .withPersistenceAdapter(persistenceAdapter)
     .withApiClient(new Alexa.DefaultApiClient())
     .lambda();
-=======
-  .addRequestHandlers(
-    LaunchRequestHandler,
-    StartTestIntentHandler,
-    ResumeStartTestIntentHandler,
-    DontResumeStartTestIntentHandler,
-    AnswerIntentHandler,
-    HintIntentHandler,
-    ResumeTestIntentHandler,
-    HighscoreIntentHandler,
-    RandomPresIntentHandler,
-    PresIntentHandler,
-    PresOfDayIntentHandler,
-    NoIntentHandler,
-    HelpIntentHandler,
-    CancelAndStopIntentHandler,
-    FallbackIntentHandler,
-    SessionEndedRequestHandler,
-    IntentReflectorHandler
-  )
-  .addErrorHandlers(ErrorHandler)
-  .addRequestInterceptors(LoadAttributesRequestInterceptor)
-  .addResponseInterceptors(SaveAttributesResponseInterceptor)
-  //.withCustomUserAgent('sample/hello-world/v1.2')
-  .withPersistenceAdapter(persistenceAdapter)
-  .withApiClient(new Alexa.DefaultApiClient())
-  .lambda();
->>>>>>> 9ca97e4eae95ef654bd87f662a79ae6ac3b765ea
