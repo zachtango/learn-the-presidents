@@ -1,6 +1,6 @@
-const PRESIDENTS = require('../data/president_info.json');
-const RANDOM_PRES_ORDER = require('../data/random_pres_order.json');
-const { getPresDescription } = require('./presidentFunctions');
+const PRESIDENTS = require("../data/president_info.json");
+const RANDOM_PRES_ORDER = require("../data/random_pres_order.json");
+const { getPresDescription } = require("./presidentFunctions");
 
 /**
  * Given a timezone, returns a string describing the president of the day.
@@ -12,7 +12,7 @@ function getPresidentOfDayResponse(timeZone) {
 
 /**
  * Returns a president object for the president of the day for a given timezone.
- * @param {String} timeZone 
+ * @param {String} timeZone
  * @returns A president
  */
 function getPresidentOfDay(timeZone) {
@@ -28,8 +28,8 @@ function getPresidentOfDay(timeZone) {
 
 /**
  * Calculates and returns the number of days between two dates.
- * @param {Date} start 
- * @param {Date} end 
+ * @param {Date} start
+ * @param {Date} end
  * @returns The number of days in between the two dates
  */
 function daysInBetween(start, end) {

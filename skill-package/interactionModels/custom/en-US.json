@@ -62,6 +62,13 @@
             }
           ],
           "samples": [
+            "Start the {difficulty} test",
+            "I'd like to take a new test",
+            "Start a new test",
+            "Start the test",
+            "I'd like to take the {difficulty} test",
+            "I want my knowledge to be tested",
+            "I'd like to take the test",
             "I want to take the test",
             "I want to take the {difficulty} test"
           ]
@@ -87,6 +94,10 @@
             }
           ],
           "samples": [
+            "it's {president}",
+            "is {president} right",
+            "it's gotta be {president}",
+            "I think it's {president}",
             "The answer is {president}",
             "{president}"
           ]
@@ -95,7 +106,33 @@
           "name": "HintIntent",
           "slots": [],
           "samples": [
+            "I'd like a hint",
+            "Can I have a hint",
+            "I need a hint",
+            "I do need a hint",
             "I want a hint"
+          ]
+        },
+        {
+          "name": "HighscoreIntent",
+          "slots": [],
+          "samples": [
+            "What are my scores",
+            "Can I see my highest test score",
+            "What are my best results",
+            "What's the best I did on the test",
+            "What's my highscore"
+          ]
+        },
+        {
+          "name": "ResumeTestIntent",
+          "slots": [],
+          "samples": [
+            "resume the test",
+            "I'd like to recommence my test",
+            "I'd like to start off where I left on the previous test",
+            "I want to resume the previous test",
+            "I want to resume the test"
           ]
         }
       ],
@@ -104,12 +141,28 @@
           "values": [
             {
               "name": {
-                "value": "normal"
+                "value": "normal",
+                "synonyms": [
+                  "straightforward",
+                  "simple",
+                  "undemanding",
+                  "calm",
+                  "light",
+                  "easy"
+                ]
               }
             },
             {
               "name": {
-                "value": "hard"
+                "value": "hard",
+                "synonyms": [
+                  "demanding",
+                  "heavy",
+                  "tricky",
+                  "rough",
+                  "tough",
+                  "difficult"
+                ]
               }
             }
           ],
@@ -122,6 +175,8 @@
               "name": {
                 "value": "unknown",
                 "synonyms": [
+                  "no clue",
+                  "no idea",
                   "don't know",
                   "I'm not sure",
                   "not sure",
@@ -568,7 +623,13 @@
               "confirmationRequired": false,
               "prompts": {
                 "elicitation": "Elicit.Slot.572992491155.80880888540"
-              }
+              },
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.1108539068760.822917592293.1554716779658"
+                }
+              ]
             }
           ],
           "delegationStrategy": "ALWAYS"
@@ -594,8 +655,25 @@
             "value": "Sorry, what was the answer to the question?"
           }
         ]
+      },
+      {
+        "id": "Slot.Validation.1108539068760.822917592293.1554716779658",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "I'm afraid {president} is not a president. Give it another go"
+          },
+          {
+            "type": "PlainText",
+            "value": "please response with a president."
+          },
+          {
+            "type": "PlainText",
+            "value": "{president}  is not a president. Try again."
+          }
+        ]
       }
     ]
   },
-  "version": "36"
+  "version": "44"
 }
