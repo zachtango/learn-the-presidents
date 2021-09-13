@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const PRESIDENTS = require('../data/president_info.json');
+const PRESIDENTS = require("../data/president_info.json");
 
 /**
  * A function to produce a deterministic random order of the presidents so that
@@ -13,7 +13,7 @@ function makeRandomPresArr() {
   for (let ind in PRESIDENTS) {
     pres_ind_arr.push(Number(ind));
   }
-  let shuffledArray = _.shuffle(pres_ind_arr)
+  let shuffledArray = _.shuffle(pres_ind_arr);
   return shuffledArray;
 }
 
