@@ -32,6 +32,62 @@ const LaunchRequestHandler = {
     }
 };
 
+const IntentHandler = {
+    canHandle(handlerInput){
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
+    },
+    handle(handlerInput){
+        const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        if(sessionAttributes.test && sessionAttributes.test.isRunning){
+            if(intentName === 'AnswerIntent'){
+                return AnswerIntentHandler.handle(handlerInput);
+            }
+        } else{
+            switch(intentName){
+                case 'PresIntent':
+                    return PresIntentHandler.handle(handlerInput);
+                    
+                case 'RandomPresIntent':
+                    return RandomPresIntentHandler.handle(handlerInput);
+
+                case 'PresOfDayIntent':
+                    return PresOfDayIntentHandler.handle(handlerInput);
+                
+                case 'TestIntent':
+                    return StartTestIntentHandler.handle(handlerInput);
+                
+                case 'ResumeTestIntent':
+                    return ResumeTestIntentHandler.handle(handlerInput);
+                
+                case 'HintIntent':
+                    if(sessionAttributes.test && sessionAttributes.test.isRunning)
+                        return HintIntentHandler.handle(handlerInput);
+
+                    break;
+
+                case 'HighscoreIntent':
+                    return HighscoreIntentHandler.handle(handlerInput);
+
+                case 'AMAZON.YesIntent':
+                    if(sessionAttributes.resumeTest)
+                        return ResumeStartTestIntentHandler.handle(handlerInput);
+                    
+                    break;
+                
+                case 'AMAZON.NoIntent':
+                    if(sessionAttributes.resumeTest)
+                        return DontResumeStartTestIntentHandler.handle(handlerInput);
+            }
+        }
+
+        return handlerInput.responseBuilder
+            .speak("Sorry, I didn't quite get that. Would you please repeat your question?")
+            .getResponse();
+    }
+}
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -173,16 +229,7 @@ const SaveAttributesResponseInterceptor = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        StartTestIntentHandler,
-        ResumeStartTestIntentHandler,
-        DontResumeStartTestIntentHandler,
-        AnswerIntentHandler,
-        HintIntentHandler,
-        ResumeTestIntentHandler,
-        HighscoreIntentHandler,
-        RandomPresIntentHandler,
-        PresIntentHandler,
-        PresOfDayIntentHandler,
+        IntentHandler,
         NoIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
