@@ -230,6 +230,8 @@ const LoadAttributesRequestInterceptor = {
       const sessionAttributes = attributesManager.getSessionAttributes();
 
       if (sessionAttributes.test) sessionAttributes.test.isRunning = false;
+
+      sessionAttributes.randomPres = null;
     }
   },
 };
