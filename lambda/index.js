@@ -45,10 +45,20 @@ const IntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         if(sessionAttributes.test && sessionAttributes.test.isRunning){
-            if(intentName === 'AnswerIntent'){
+            switch(intentName){
+              case 'AnswerIntent':
                 return AnswerIntentHandler.handle(handlerInput);
+              case 'HintIntent':
+                return HintIntent.handle(handlerInput);
+              default:
+                return handlerInput.responseBuilder
+                  .speak("Unfortunately, I cannot complete your request because the test is currently running.")
+                  .getResponse();
             }
+            
         } else{
+            const testErrorMsg = "Sorry, I can't do that because a test is not running. Let me know if you'd like to start a test.";
+
             switch(intentName){
                 case 'PresIntent':
                     return PresIntentHandler.handle(handlerInput);
@@ -66,10 +76,14 @@ const IntentHandler = {
                     return ResumeTestIntentHandler.handle(handlerInput);
                 
                 case 'HintIntent':
-                    if(sessionAttributes.test && sessionAttributes.test.isRunning)
-                        return HintIntentHandler.handle(handlerInput);
+                    return handlerInput.responseBuilder
+                      .speak(testErrorMsg)
+                      .getResponse();
 
-                    break;
+                case 'AnswerIntent':
+                  return handlerInput.responseBuilder
+                    .speak(testErrorMsg)
+                    .getResponse();
 
                 case 'HighscoreIntent':
                     return HighscoreIntentHandler.handle(handlerInput);
@@ -87,7 +101,7 @@ const IntentHandler = {
         }
 
         return handlerInput.responseBuilder
-            .speak("Sorry, I didn't quite get that. Would you please repeat your question?")
+            .speak("Sorry, I don't know that one. Please try a different request.")
             .getResponse();
     }
 }
