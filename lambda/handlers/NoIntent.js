@@ -12,6 +12,8 @@ const NoIntentHandler = {
   handle(handlerInput) {
     clearQuestion(handlerInput);
     const response = `${getCasualResponse()}.`;
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    sessionAttributes.randomPres = null;
 
     return handlerInput.responseBuilder.speak(response).getResponse();
   },

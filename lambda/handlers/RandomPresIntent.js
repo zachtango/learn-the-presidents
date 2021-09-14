@@ -15,6 +15,9 @@ const RandomPresIntentHandler = {
     );
   },
   handle(handlerInput) {
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    sessionAttributes.randomPres = true;
+
     const responseText = getRandomPresidentText();
     setQuestion(handlerInput, QUESTION_NAMES.RandomPresIntent);
 

@@ -49,10 +49,10 @@ const IntentHandler = {
               case 'AnswerIntent':
                 return AnswerIntentHandler.handle(handlerInput);
               case 'HintIntent':
-                return HintIntent.handle(handlerInput);
+                return HintIntentHandler.handle(handlerInput);
               default:
                 return handlerInput.responseBuilder
-                  .speak("Unfortunately, I cannot complete your request because the test is currently running.")
+                  .speak("Unfortunately, I cannot complete your request while the test is currently running.")
                   .getResponse();
             }
             
@@ -90,13 +90,21 @@ const IntentHandler = {
 
                 case 'AMAZON.YesIntent':
                     if(sessionAttributes.resumeTest)
-                        return ResumeStartTestIntentHandler.handle(handlerInput);
+                      return ResumeStartTestIntentHandler.handle(handlerInput);
                     
                     break;
                 
                 case 'AMAZON.NoIntent':
                     if(sessionAttributes.resumeTest)
-                        return DontResumeStartTestIntentHandler.handle(handlerInput);
+                      return DontResumeStartTestIntentHandler.handle(handlerInput)
+                    else if(sessionAttributes.randomPres)
+                      return NoIntentHandler.handle(handlerInput);
+
+                    break;
+                
+                case 'AMAZON.HelpIntent':
+                  return HelpIntentHandler.handle(handlerInput);
+
             }
         }
 
@@ -243,8 +251,6 @@ const SaveAttributesResponseInterceptor = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        NoIntentHandler,
-        HelpIntentHandler,
         CancelAndStopIntentHandler,
         IntentHandler,
         FallbackIntentHandler,
