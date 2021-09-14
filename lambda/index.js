@@ -53,6 +53,7 @@ const IntentHandler = {
               default:
                 return handlerInput.responseBuilder
                   .speak("Unfortunately, I cannot complete your request while the test is currently running.")
+                  .reprompt("I can't complete your request while the test is running")
                   .getResponse();
             }
             
@@ -78,11 +79,13 @@ const IntentHandler = {
                 case 'HintIntent':
                     return handlerInput.responseBuilder
                       .speak(testErrorMsg)
+                      .reprompt(testErrorMsg)
                       .getResponse();
 
                 case 'AnswerIntent':
                   return handlerInput.responseBuilder
                     .speak(testErrorMsg)
+                    .reprompt(testErrorMsg)
                     .getResponse();
 
                 case 'HighscoreIntent':
@@ -110,6 +113,7 @@ const IntentHandler = {
 
         return handlerInput.responseBuilder
             .speak("Sorry, I don't know that one. Please try a different request.")
+            .reprompt("Please try a different request")
             .getResponse();
     }
 }
